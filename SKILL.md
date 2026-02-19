@@ -86,7 +86,12 @@ When presenting results in chat, follow this structure:
 
 1. **Calendar first** — users want to know what to post when. Show the 7-day table.
 2. **Reel concepts next** — show each concept as a clear block with hook, script, sound, caption, hashtags, and CTA.
-3. **Full data on request** — if the user asks for details, show the filtered trends table with scores.
+3. **Interactive report link** — ALWAYS provide a clickable browser link to the HTML report using this format:
+   - **Primary link:** Use HTML Preview for instant browser viewing: `https://htmlpreview.github.io/?https://github.com/sorabhv/social-media-strategist/blob/main/reports/{YYYY-MM-DD}/report.html`
+   - **Fallback link:** Direct GitHub link: `https://github.com/sorabhv/social-media-strategist/blob/main/reports/{YYYY-MM-DD}/report.html`
+   - Format as a markdown link: `[📊 Open Your Content Plan Report](url_here)`
+   - Never show the URL as plain text — always make it clickable
+4. **Full data on request** — if the user asks for details, show the filtered trends table with scores.
 
 Format using markdown tables for the calendar, and structured blocks for Reel concepts. Keep it scannable.
 
