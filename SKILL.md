@@ -57,7 +57,9 @@ cd scripts && python3 content_planner.py
 
 This generates 5 Reel concepts and a 7-day posting calendar. Output: `output/content_plan.json`.
 
-Present the weekly calendar first (day, content title, time, platforms), then present each Reel concept with: hook, script steps, sound recommendation, caption, hashtags, CTA, difficulty, and time estimate.
+IMPORTANT: The `content_plan.json` MUST include a `platform_tips` object for every day in `weekly_calendar`. Each day's `platform_tips` must contain a specific, actionable tip for EACH platform listed in that day's `platforms` array. If the LLM output is missing `platform_tips`, re-prompt or add them before writing the file.
+
+Present the weekly calendar first (day, content title, time, platforms, platform tips), then present each Reel concept with: hook, script steps, sound recommendation, caption, hashtags, CTA, difficulty, and time estimate.
 
 ### Step 4: HTML Report & GitHub Push
 

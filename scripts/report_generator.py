@@ -37,6 +37,52 @@ def load_json(path: Path) -> dict | None:
     return None
 
 
+def inject_sound_links(content_plan: dict, trends: dict | None) -> dict:
+    """Match reel concept sounds to TikTok URLs from trends.json.
+    
+    This runs at report generation time so it works regardless of
+    whether the LLM steps were run locally or by the OpenClaw agent.
+    """
+    if not trends or not content_plan:
+        return content_plan
+
+    # Build lookup: normalized name -> url from all song trends
+    url_map = {}
+    for t in trends.get("trends", []):
+        if t.get("url") and t.get("type") == "song":
+            name = t.get("name", "").strip().lower()
+            url_map[name] = t["url"]
+            # Also index by id for direct matching
+            url_map[t["id"]] = t["url"]
+
+    for concept in content_plan.get("reel_concepts", []):
+        if concept.get("sound_link"):
+            continue  # Already has a link
+
+        # Try matching by trend_id
+        tid = concept.get("trend_id", "")
+        if tid in url_map:
+            concept["sound_link"] = url_map[tid]
+            continue
+
+        # Match by sound name (before the " — Artist" part)
+        sound = concept.get("sound", "")
+        sound_base = sound.split("\u2014")[0].split("\u2013")[0].split(" - ")[0].strip().lower()
+
+        if sound_base in url_map:
+            concept["sound_link"] = url_map[sound_base]
+            continue
+
+        # Fuzzy fallback: partial match
+        for trend_name, link in url_map.items():
+            if not trend_name.startswith("tiktok_"):  # skip id keys
+                if trend_name in sound_base or sound_base in trend_name:
+                    concept["sound_link"] = link
+                    break
+
+    return content_plan
+
+
 def format_views(n) -> str:
     if n is None:
         return "—"
@@ -609,6 +655,8 @@ def build_html(trends: dict | None, filtered: dict | None, content_plan: dict | 
     body_parts = []
 
     if content_plan:
+        # Inject sound URLs from trends.json into reel concepts
+        content_plan = inject_sound_links(content_plan, trends)
         body_parts.append(render_calendar(content_plan))
         body_parts.append(render_reel_concepts(content_plan))
 
