@@ -1,0 +1,170 @@
+{
+  "coffee_shop": {
+    "display_name": "Coffee Shop / Cafe",
+    "tiktok_hashtag_seeds": ["coffee", "barista", "latteart", "coffeeshop", "cafe", "espresso", "coldbrew", "coffeelover"],
+    "subreddits": ["coffeeshops", "Coffee", "barista", "cafe"],
+    "google_trends_keywords": ["coffee shop", "latte art", "cold brew", "cafe near me", "iced coffee"],
+    "content_themes": ["behind the scenes", "drink tutorials", "latte art", "morning rush", "seasonal menu", "cozy vibes"]
+  },
+  "restaurant": {
+    "display_name": "Restaurant",
+    "tiktok_hashtag_seeds": ["restaurant", "foodie", "chef", "plating", "behindthescenes", "foodtok", "eeeeeats", "mukbang"],
+    "subreddits": ["restaurant", "KitchenConfidential", "food", "foodporn", "Cooking"],
+    "google_trends_keywords": ["restaurant near me", "trending food", "food trends", "viral recipes"],
+    "content_themes": ["plating videos", "chef life", "recipe reveals", "kitchen behind the scenes", "customer reactions", "secret menu"]
+  },
+  "bakery": {
+    "display_name": "Bakery",
+    "tiktok_hashtag_seeds": ["bakery", "baking", "sourdough", "cakes", "pastry", "breadtok", "satisfying", "caketok"],
+    "subreddits": ["Baking", "Breadit", "cakedecorating", "pastry"],
+    "google_trends_keywords": ["bakery", "sourdough bread", "cake decorating", "pastry trends", "viral dessert"],
+    "content_themes": ["satisfying decorating", "dough process", "sunrise bake routine", "custom cake reveals", "taste tests"]
+  },
+  "fitness_gym": {
+    "display_name": "Fitness Gym",
+    "tiktok_hashtag_seeds": ["gym", "fitness", "workout", "gymtok", "gains", "fitnessmotivation", "personaltrainer", "legday"],
+    "subreddits": ["fitness", "GYM", "bodybuilding", "weightroom", "xxfitness"],
+    "google_trends_keywords": ["gym workout", "fitness trends", "home workout", "gym near me", "workout routine"],
+    "content_themes": ["workout tutorials", "transformation stories", "gym fails", "exercise form tips", "day in the life", "motivation"]
+  },
+  "yoga_studio": {
+    "display_name": "Yoga Studio",
+    "tiktok_hashtag_seeds": ["yoga", "yogapractice", "flexibility", "mindfulness", "yogaflow", "meditation", "wellness", "stretching"],
+    "subreddits": ["yoga", "flexibility", "Meditation", "wellness"],
+    "google_trends_keywords": ["yoga class", "yoga for beginners", "morning yoga", "yoga studio near me", "meditation"],
+    "content_themes": ["flow sequences", "beginner tips", "morning routines", "flexibility progress", "studio ambiance", "mindfulness moments"]
+  },
+  "hair_salon": {
+    "display_name": "Hair Salon",
+    "tiktok_hashtag_seeds": ["hairstylist", "hairsalon", "hairtransformation", "balayage", "haircolor", "hairtok", "blowout", "haircut"],
+    "subreddits": ["Hair", "FancyFollicles", "hairdresser", "curlyhair"],
+    "google_trends_keywords": ["hair trends", "balayage", "haircut ideas", "hair color trends", "salon near me"],
+    "content_themes": ["transformation reveals", "color mixing", "before and after", "styling tutorials", "trend recreations"]
+  },
+  "barbershop": {
+    "display_name": "Barbershop",
+    "tiktok_hashtag_seeds": ["barber", "barbershop", "fade", "haircut", "barberlife", "barbertok", "lineup", "taper"],
+    "subreddits": ["Barber", "malegrooming", "malehairadvice"],
+    "google_trends_keywords": ["barber near me", "fade haircut", "men's haircut trends", "barbershop"],
+    "content_themes": ["satisfying fades", "hot towel shaves", "transformation reveals", "tool ASMR", "walk-in reactions"]
+  },
+  "nail_salon": {
+    "display_name": "Nail Salon",
+    "tiktok_hashtag_seeds": ["nails", "nailart", "nailsalon", "gelnails", "nailtok", "manicure", "naildesign", "acrylicnails"],
+    "subreddits": ["Nails", "RedditLaqueristas", "NailArt"],
+    "google_trends_keywords": ["nail trends", "nail art ideas", "gel nails", "nail salon near me", "spring nails"],
+    "content_themes": ["nail art tutorials", "satisfying polish application", "trend recreations", "client transformations", "seasonal designs"]
+  },
+  "clothing_boutique": {
+    "display_name": "Clothing Boutique",
+    "tiktok_hashtag_seeds": ["boutique", "fashion", "ootd", "outfitinspo", "styleinspo", "fashiontok", "smallbusinessfashion", "trending"],
+    "subreddits": ["femalefashionadvice", "malefashionadvice", "streetwear", "fashion"],
+    "google_trends_keywords": ["fashion trends", "outfit ideas", "spring fashion", "trending outfits", "style inspiration"],
+    "content_themes": ["outfit of the day", "new arrivals try-on", "styling tips", "pack an order", "trend vs classic"]
+  },
+  "jewelry_store": {
+    "display_name": "Jewelry Store",
+    "tiktok_hashtag_seeds": ["jewelry", "handmadejewelry", "rings", "necklace", "jewelrytok", "diamonds", "goldsmith", "customjewelry"],
+    "subreddits": ["jewelry", "jewelrymaking", "EngagementRings", "Diamonds"],
+    "google_trends_keywords": ["jewelry trends", "engagement rings", "gold jewelry", "handmade jewelry", "custom rings"],
+    "content_themes": ["crafting process", "ring reveals", "custom order stories", "gemstone education", "satisfying polishing"]
+  },
+  "pet_store": {
+    "display_name": "Pet Store / Pet Services",
+    "tiktok_hashtag_seeds": ["pets", "dogsoftiktok", "catsoftiktok", "petstore", "pettok", "puppy", "petcare", "furbaby"],
+    "subreddits": ["pets", "dogs", "cats", "Aww", "doggrooming"],
+    "google_trends_keywords": ["pet store near me", "dog food", "pet trends", "puppy supplies", "pet grooming"],
+    "content_themes": ["cute animal moments", "product demos", "grooming transformations", "pet tips", "customer pets spotlight"]
+  },
+  "florist": {
+    "display_name": "Florist / Flower Shop",
+    "tiktok_hashtag_seeds": ["florist", "flowers", "bouquet", "flowerarrangement", "floraltok", "weddingflowers", "roses", "floraldesign"],
+    "subreddits": ["florists", "flowers", "gardening", "weddingplanning"],
+    "google_trends_keywords": ["flower delivery", "bouquet ideas", "wedding flowers", "flower arrangement", "florist near me"],
+    "content_themes": ["bouquet assembly", "flower care tips", "wedding reveals", "seasonal arrangements", "satisfying wrapping"]
+  },
+  "real_estate_agent": {
+    "display_name": "Real Estate Agent",
+    "tiktok_hashtag_seeds": ["realestate", "housetour", "realtor", "dreamhome", "realestatetok", "openhouse", "homesearch", "firsttimehomebuyer"],
+    "subreddits": ["RealEstate", "FirstTimeHomeBuyer", "realtors", "HomeImprovement"],
+    "google_trends_keywords": ["houses for sale", "real estate market", "home buying tips", "mortgage rates", "open house"],
+    "content_themes": ["house tours", "market updates", "buyer tips", "listing reveals", "day in the life", "neighborhood spotlights"]
+  },
+  "photographer": {
+    "display_name": "Photographer",
+    "tiktok_hashtag_seeds": ["photography", "photoshoot", "photographer", "phototok", "behindthescenes", "editing", "portrait", "lightroom"],
+    "subreddits": ["photography", "photocritique", "portraits", "EditMyRaw"],
+    "google_trends_keywords": ["photography tips", "portrait photography", "photo editing", "photographer near me", "photoshoot ideas"],
+    "content_themes": ["before/after edits", "behind the scenes shoots", "lighting tutorials", "client reveals", "gear reviews"]
+  },
+  "tattoo_shop": {
+    "display_name": "Tattoo Shop",
+    "tiktok_hashtag_seeds": ["tattoo", "tattooartist", "tattooideas", "tattootok", "ink", "tattoodesign", "tattooing", "finelinetattoo"],
+    "subreddits": ["tattoo", "tattoos", "tattoodesigns", "TattooArtists"],
+    "google_trends_keywords": ["tattoo ideas", "small tattoos", "tattoo trends", "fine line tattoo", "tattoo shop near me"],
+    "content_themes": ["time-lapse inking", "design process", "healed results", "client reactions", "flash day promos"]
+  },
+  "auto_detailing": {
+    "display_name": "Auto Detailing",
+    "tiktok_hashtag_seeds": ["autodetailing", "cardetailing", "satisfying", "detailingtok", "carcleaning", "ceramiccoating", "carwash", "paintcorrection"],
+    "subreddits": ["AutoDetailing", "cars", "Detailing"],
+    "google_trends_keywords": ["car detailing", "ceramic coating", "auto detailing near me", "car wash", "paint correction"],
+    "content_themes": ["satisfying cleaning transformations", "before/after reveals", "product demos", "interior deep cleans", "ceramic coating process"]
+  },
+  "dog_groomer": {
+    "display_name": "Dog Groomer",
+    "tiktok_hashtag_seeds": ["doggrooming", "groomer", "groomertok", "doggroomer", "dogspa", "doodle", "fluffydog", "dogmakeover"],
+    "subreddits": ["doggrooming", "dogs", "Dogtraining", "poodles"],
+    "google_trends_keywords": ["dog grooming", "dog groomer near me", "puppy grooming", "doodle grooming", "dog haircut"],
+    "content_themes": ["fluffy transformations", "nervous dog calming", "breed-specific cuts", "satisfying dematting", "before/after reveals"]
+  },
+  "personal_trainer": {
+    "display_name": "Personal Trainer",
+    "tiktok_hashtag_seeds": ["personaltrainer", "fitness", "workout", "fitnesstips", "gymtok", "exercise", "transformation", "nutrition"],
+    "subreddits": ["personaltraining", "fitness", "bodyweightfitness", "loseit", "gainit"],
+    "google_trends_keywords": ["personal trainer", "workout plan", "fitness tips", "weight loss", "home workout"],
+    "content_themes": ["quick workout routines", "form corrections", "client transformations", "meal prep tips", "myth busting", "day in the life"]
+  },
+  "food_truck": {
+    "display_name": "Food Truck",
+    "tiktok_hashtag_seeds": ["foodtruck", "streetfood", "foodtok", "foodtrucklife", "eeeeeats", "tacos", "burgers", "foodvendor"],
+    "subreddits": ["foodtrucks", "streetfood", "food", "FoodPorn"],
+    "google_trends_keywords": ["food truck near me", "street food", "food truck menu", "best food trucks", "food festival"],
+    "content_themes": ["cooking on the truck", "long line hype", "menu reveals", "location announcements", "customer first bites"]
+  },
+  "bookstore": {
+    "display_name": "Bookstore",
+    "tiktok_hashtag_seeds": ["bookstore", "booktok", "books", "reading", "bookshelf", "bookish", "newreleases", "bookhaul"],
+    "subreddits": ["books", "BooksThatFeelLikeThis", "suggestmeabook", "bookcollecting"],
+    "google_trends_keywords": ["bookstore near me", "best books", "new book releases", "booktok recommendations", "reading list"],
+    "content_themes": ["staff picks", "shelf tours", "book unboxing", "reading recommendations", "cozy bookstore vibes", "author events"]
+  },
+  "home_decor": {
+    "display_name": "Home Decor / Interior Design",
+    "tiktok_hashtag_seeds": ["homedecor", "interiordesign", "homeinspo", "roomtransformation", "homedesign", "cozyhome", "decorideas", "interiorstyling"],
+    "subreddits": ["InteriorDesign", "HomeDecorating", "DesignMyRoom", "CozyPlaces", "AmateurRoomPorn", "HomeImprovement"],
+    "google_trends_keywords": ["home decor ideas", "interior design trends", "room makeover", "cozy home decor", "DIY home decor"],
+    "content_themes": ["room transformations", "before and after", "DIY decor projects", "budget makeovers", "styling tips", "seasonal decorating", "small space hacks"]
+  },
+  "music_school": {
+    "display_name": "Music School / Music Lessons",
+    "tiktok_hashtag_seeds": ["musictok", "learnmusic", "musiclesson", "guitarlesson", "pianotok", "singingtips", "musicteacher", "practicesession"],
+    "subreddits": ["LearnMusic", "MusicTheory", "guitarlessons", "Piano", "Singing", "WeAreTheMusicMakers", "musicproduction"],
+    "google_trends_keywords": ["music lessons near me", "learn guitar", "learn piano", "singing lessons", "music school", "music theory basics"],
+    "content_themes": ["student progress reveals", "quick tutorials", "instrument tips", "practice routines", "song breakdowns", "beginner vs advanced", "cover performances"]
+  },
+  "education": {
+    "display_name": "Education / Tutoring Center",
+    "tiktok_hashtag_seeds": ["edutok", "learnontiktok", "education", "studytips", "onlinelearning", "elearning", "studyhacks", "teachersoftiktok"],
+    "subreddits": ["education", "Teachers", "learnprogramming", "HomeworkHelp", "AskAcademia", "studytips"],
+    "google_trends_keywords": ["online tutoring", "study tips", "online courses", "education trends", "learn online free"],
+    "content_themes": ["quick explainers", "study hacks", "exam prep tips", "myth busting facts", "day in the life", "student success stories", "fun learning challenges"]
+  },
+  "health_wellness": {
+    "display_name": "Health & Wellness Clinic",
+    "tiktok_hashtag_seeds": ["health", "wellness", "healthtips", "holistichealth", "wellnesstips", "healthylifestyle", "selfcare", "naturalremedy"],
+    "subreddits": ["HealthyFood", "wellness", "nutrition", "Supplements", "AlternativeHealth", "selfcare"],
+    "google_trends_keywords": ["health tips", "wellness trends", "holistic health", "natural remedies", "healthy lifestyle", "wellness clinic near me"],
+    "content_themes": ["health myth busting", "daily wellness routines", "quick health tips", "patient success stories", "nutrition advice", "stress management", "natural remedies"]
+  }
+}
