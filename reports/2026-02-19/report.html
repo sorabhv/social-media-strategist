@@ -5,576 +5,493 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Media Content Plan</title>
     <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 :root {
-    --bg: #f8fafc;
-    --surface: #ffffff;
-    --border: #e2e8f0;
-    --text: #1e293b;
-    --text-muted: #64748b;
-    --accent: #6366f1;
-    --accent-light: #eef2ff;
-    --radius: 10px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+    --bg: #0f0f13;
+    --bg-secondary: #16161d;
+    --surface: rgba(255,255,255,0.04);
+    --surface-hover: rgba(255,255,255,0.07);
+    --surface-solid: #1c1c26;
+    --border: rgba(255,255,255,0.08);
+    --border-light: rgba(255,255,255,0.05);
+    --text: #e8e8ed;
+    --text-secondary: #a0a0b0;
+    --text-muted: #6b6b80;
+    --accent: #8b5cf6;
+    --accent-light: rgba(139,92,246,0.12);
+    --accent-glow: rgba(139,92,246,0.25);
+    --pink: #ec4899;
+    --pink-light: rgba(236,72,153,0.12);
+    --amber: #f59e0b;
+    --amber-light: rgba(245,158,11,0.12);
+    --emerald: #10b981;
+    --emerald-light: rgba(16,185,129,0.12);
+    --blue: #3b82f6;
+    --blue-light: rgba(59,130,246,0.12);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
+    --gradient-hero: linear-gradient(135deg, #1a1033 0%, #0f0f13 50%, #0d1117 100%);
+    --gradient-card: linear-gradient(135deg, rgba(139,92,246,0.06) 0%, rgba(236,72,153,0.03) 100%);
 }
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.6;
-    padding: 2rem 1rem;
-    max-width: 1100px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.page-wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+}
+
+/* ---- HERO HEADER ---- */
+header {
+    background: var(--gradient-hero);
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 1.5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+header::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+header::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(236,72,153,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+header .header-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1140px;
     margin: 0 auto;
 }
-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 2px solid var(--border);
-}
 header h1 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 0.3rem;
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #c084fc 0%, #f472b6 50%, #fb923c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.6rem;
 }
-.meta { color: var(--text-muted); font-size: 0.95rem; }
+.meta {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 400;
+}
 .subtitle {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     background: var(--accent-light);
     color: var(--accent);
-    padding: 2px 10px;
-    border-radius: 12px;
-    font-size: 0.8rem;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
     margin-left: 0.5rem;
     font-weight: 600;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(139,92,246,0.2);
 }
-section { margin-bottom: 2.5rem; }
+
+/* ---- SECTION ---- */
+section { margin-bottom: 3rem; }
 h2 {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     color: var(--text);
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--accent-light);
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
 }
-.table-wrap { overflow-x: auto; }
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.2em;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--pink));
+    flex-shrink: 0;
+}
+
+/* ---- CALENDAR ---- */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+.cal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+.cal-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+}
+.cal-card:hover {
+    border-color: rgba(139,92,246,0.3);
+    background: var(--surface-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(139,92,246,0.1);
+}
+.cal-card.type-trending::before { background: linear-gradient(90deg, var(--accent), var(--pink)); }
+.cal-card.type-evergreen::before { background: linear-gradient(90deg, var(--emerald), #34d399); }
+.cal-card.type-engagement::before { background: linear-gradient(90deg, var(--amber), #fbbf24); }
+.cal-card.type-rest::before { background: linear-gradient(90deg, #6b7280, #9ca3af); }
+.cal-card.type-promo::before { background: linear-gradient(90deg, var(--blue), #60a5fa); }
+.cal-day {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+.cal-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+.cal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+.cal-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.04);
+    padding: 3px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+}
+.cal-chip svg { width: 12px; height: 12px; opacity: 0.6; }
+
+/* ---- TABLE (for details/trends) ---- */
+.table-wrap { overflow-x: auto; border-radius: var(--radius-sm); }
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.88rem;
-    background: var(--surface);
-    border-radius: var(--radius);
+    font-size: 0.84rem;
+    background: var(--surface-solid);
+    border-radius: var(--radius-sm);
     overflow: hidden;
-    box-shadow: var(--shadow);
 }
 th {
-    background: var(--accent-light);
-    color: var(--accent);
+    background: rgba(255,255,255,0.04);
+    color: var(--text-muted);
     font-weight: 600;
     text-align: left;
-    padding: 0.65rem 0.75rem;
+    padding: 0.7rem 0.85rem;
     white-space: nowrap;
-    font-size: 0.82rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--border);
 }
 td {
-    padding: 0.6rem 0.75rem;
-    border-top: 1px solid var(--border);
+    padding: 0.65rem 0.85rem;
+    border-top: 1px solid var(--border-light);
     vertical-align: top;
+    color: var(--text-secondary);
 }
-tr:hover td { background: #fafaff; }
-.day-cell { white-space: nowrap; min-width: 80px; }
-.notes-cell { color: var(--text-muted); font-size: 0.82rem; max-width: 250px; }
+tr:hover td { background: rgba(139,92,246,0.04); }
+.day-cell { white-space: nowrap; min-width: 80px; color: var(--text); }
+.notes-cell { color: var(--text-muted); font-size: 0.8rem; max-width: 280px; }
+
+/* ---- BADGES ---- */
 .badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.04em;
+    border: 1px solid transparent;
 }
-.concepts-grid { display: flex; flex-direction: column; gap: 1.2rem; }
+
+/* ---- CONCEPT CARDS ---- */
+.concepts-grid { display: flex; flex-direction: column; gap: 1.5rem; }
 .card {
-    background: var(--surface);
+    background: var(--gradient-card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     overflow: hidden;
+    transition: all 0.25s ease;
+}
+.card:hover {
+    border-color: rgba(139,92,246,0.25);
+    box-shadow: var(--shadow-lg), 0 0 40px rgba(139,92,246,0.06);
 }
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 1.2rem;
-    background: var(--accent-light);
+    padding: 1rem 1.5rem;
+    background: rgba(255,255,255,0.02);
     border-bottom: 1px solid var(--border);
 }
 .card-header h3 {
-    font-size: 1rem;
-    color: var(--accent);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
     margin: 0;
+    letter-spacing: -0.01em;
 }
-.card-badges { display: flex; align-items: center; gap: 0.5rem; }
-.time-est { font-size: 0.8rem; color: var(--text-muted); }
-.card-body { padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.card-badges { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+.time-est {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.card-body {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
 .hook {
-    background: #fffbeb;
-    padding: 0.5rem 0.75rem;
-    border-radius: 6px;
-    border-left: 3px solid #f59e0b;
-    font-size: 0.9rem;
+    background: rgba(245,158,11,0.08);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--amber);
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.5;
 }
-.script ol { padding-left: 1.5rem; margin-top: 0.3rem; }
-.script li { margin-bottom: 0.2rem; font-size: 0.88rem; }
-.detail-row { font-size: 0.88rem; }
-.label { font-weight: 600; color: var(--text-muted); }
+.hook strong { color: var(--amber); font-weight: 600; }
+.script { background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); padding: 0.8rem 1rem; }
+.script strong { color: var(--text-secondary); font-weight: 600; font-size: 0.84rem; }
+.script ol { padding-left: 1.5rem; margin-top: 0.4rem; }
+.script li {
+    margin-bottom: 0.35rem;
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.script li::marker { color: var(--accent); font-weight: 600; }
+.detail-row {
+    font-size: 0.86rem;
+    padding: 0.3rem 0;
+    color: var(--text-secondary);
+}
+.label {
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-right: 0.3rem;
+}
 .hashtag {
     display: inline-block;
     background: var(--accent-light);
     color: var(--accent);
-    padding: 1px 7px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    margin: 1px 2px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    margin: 2px 3px;
+    border: 1px solid rgba(139,92,246,0.15);
+    font-weight: 500;
+    transition: all 0.15s ease;
 }
+.hashtag:hover { background: rgba(139,92,246,0.2); }
+
+/* ---- DETAILS / EXPANDABLE ---- */
 details {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     margin-bottom: 1.2rem;
+    overflow: hidden;
 }
 details summary {
-    padding: 0.8rem 1.2rem;
+    padding: 1rem 1.5rem;
     font-weight: 600;
     cursor: pointer;
-    color: var(--accent);
+    color: var(--text);
     font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.15s ease;
 }
-details summary:hover { background: var(--accent-light); }
+details summary::before {
+    content: '\25B6';
+    font-size: 0.6rem;
+    color: var(--accent);
+    transition: transform 0.2s ease;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { background: var(--surface-hover); }
 details[open] summary { border-bottom: 1px solid var(--border); }
-details > :not(summary) { padding: 0 1.2rem; }
+details > :not(summary) { padding: 0 1.5rem; }
 details table { box-shadow: none; }
-details .table-wrap { margin: 0.8rem 0; }
-.summary-pills { padding: 0.8rem 0; font-size: 0.85rem; }
+details .table-wrap { margin: 1rem 0; }
+.summary-pills { padding: 1rem 0; font-size: 0.84rem; color: var(--text-secondary); }
 .pill {
-    display: inline-block;
-    background: var(--bg);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255,255,255,0.04);
     border: 1px solid var(--border);
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    margin: 2px;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    margin: 3px;
+    color: var(--text-secondary);
 }
-.hashtags-tiered { display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: baseline; }
-.hashtag-tier { display: inline-flex; align-items: baseline; gap: 3px; margin-right: 0.5rem; }
+
+/* ---- HASHTAG TIERS ---- */
+.hashtags-tiered { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.hashtag-tier { display: inline-flex; align-items: center; gap: 4px; margin-right: 0.5rem; }
 .tier-label {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 700;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
 }
+
+/* ---- PLATFORM TIPS ---- */
 .platform-tips {
     list-style: none;
-    padding: 0.4rem 0 0 0;
-    margin: 0.3rem 0 0 0;
+    padding: 0.5rem 0 0 0;
+    margin: 0.4rem 0 0 0;
     border-top: 1px dashed var(--border);
     font-size: 0.78rem;
     color: var(--text-muted);
 }
-.platform-tips li { margin-bottom: 0.2rem; }
+.platform-tips li { margin-bottom: 0.25rem; }
 .platform-tips li strong { color: var(--accent); font-weight: 600; }
+
+/* ---- MISC ---- */
 .muted { color: var(--text-muted); font-size: 0.82rem; padding: 0.5rem 0 1rem; }
-.empty-state { text-align: center; padding: 3rem; }
+.empty-state { text-align: center; padding: 4rem 2rem; }
+.empty-state h2::before { display: none; }
 .empty-state pre {
-    background: var(--surface);
+    background: var(--surface-solid);
     border: 1px solid var(--border);
-    padding: 1rem;
-    border-radius: var(--radius);
+    padding: 1.2rem;
+    border-radius: var(--radius-sm);
     text-align: left;
     display: inline-block;
     margin-top: 1rem;
-    font-size: 0.85rem;
+    font-size: 0.84rem;
+    color: var(--text-secondary);
 }
+
+/* ---- FOOTER ---- */
 footer {
     text-align: center;
     color: var(--text-muted);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     margin-top: 3rem;
-    padding-top: 1.5rem;
+    padding: 2rem 1rem;
     border-top: 1px solid var(--border);
+    background: var(--surface);
 }
+footer span {
+    background: linear-gradient(135deg, var(--accent), var(--pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+}
+
+/* ---- RESPONSIVE ---- */
 @media (max-width: 700px) {
-    body { padding: 1rem 0.5rem; }
-    .card-header { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
-    th, td { padding: 0.4rem 0.5rem; font-size: 0.8rem; }
+    header { padding: 2.5rem 1rem 2rem; }
+    header h1 { font-size: 1.7rem; }
+    .page-wrapper { padding: 0 1rem 2rem; }
+    .calendar-grid { grid-template-columns: 1fr; }
+    .card-header { flex-direction: column; align-items: flex-start; gap: 0.4rem; padding: 0.8rem 1rem; }
+    .card-body { padding: 1rem; }
+    th, td { padding: 0.4rem 0.5rem; font-size: 0.78rem; }
+}
+@media (max-width: 480px) {
+    header h1 { font-size: 1.4rem; }
+    .cal-card { padding: 1rem; }
 }
 </style>
 </head>
 <body>
     
     <header>
-        <h1>Social Media Content Plan</h1>
-        <p class="meta">Coffee Shop &middot; — &middot; February 19, 2026 <span class="subtitle">50 trends scanned</span></p>
+        <div class="header-inner">
+            <h1>Social Media Content Plan</h1>
+            <p class="meta">Coffee Shop / Cafe &middot; US &middot; February 19, 2026 <span class="subtitle">89 trends scanned</span></p>
+        </div>
     </header>
+    <div class="page-wrapper">
     
-    <section>
-        <h2>Weekly Calendar</h2>
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Day</th><th>Content</th><th>Time</th>
-                        <th>Platforms</th><th>Type</th><th>Notes / Platform Tips</th>
-                    </tr>
-                </thead>
-                <tbody>
-            <tr>
-                <td class="day-cell"><strong>Monday</strong></td>
-                <td>Behind the Scenes: Opening Routine</td>
-                <td>7:00 AM</td>
-                <td>TikTok, Instagram Reels, YouTube Shorts</td>
-                <td><span class="badge" style="color:#065f46;background:#d1fae5">evergreen</span></td>
-                <td class="notes-cell">Start the week with relatable, aspirational morning content when commuters are scrolling before work<ul class="platform-tips"><li><strong>TikTok:</strong> Use text overlay timestamps for pacing, encourage &#x27;day in the life&#x27; duets, reply to comments with a follow-up showing closing routine</li><li><strong>Instagram Reels:</strong> Save this to a &#x27;Behind the Scenes&#x27; highlight, use #morningroutine and #dayinthelife hashtags, ask followers to share their morning routines</li><li><strong>YouTube Shorts:</strong> Title: &#x27;Opening a Coffee Shop at 6 AM | Morning Routine&#x27; — include SEO keywords, end with &#x27;subscribe to see our evening routine&#x27;</li></ul></td>
-            </tr>
-            <tr>
-                <td class="day-cell"><strong>Tuesday</strong></td>
-                <td>Cozy Morning Vibes at Our Cafe</td>
-                <td>8:30 AM</td>
-                <td>TikTok, Instagram Reels</td>
-                <td><span class="badge" style="color:#7c3aed;background:#ede9fe">trending</span></td>
-                <td class="notes-cell">Capitalize on the trending lofi sound — peak engagement time for coffee content<ul class="platform-tips"><li><strong>TikTok:</strong> This lofi track is RISING — use it NOW for maximum reach, add &#x27;cozy cafe&#x27; in your profile bio, encourage saves by making it aesthetically satisfying</li><li><strong>Instagram Reels:</strong> Set a custom cover with warm tones, use carousel post with best still frames for feed, add to &#x27;Cafe Vibes&#x27; guide</li></ul></td>
-            </tr>
-            <tr>
-                <td class="day-cell"><strong>Wednesday</strong></td>
-                <td>Morning Rush Energy</td>
-                <td>7:30 AM</td>
-                <td>TikTok, Instagram Reels</td>
-                <td><span class="badge" style="color:#7c3aed;background:#ede9fe">trending</span></td>
-                <td class="notes-cell">Mid-week energy boost — challenge format drives duets and shares<ul class="platform-tips"><li><strong>TikTok:</strong> Add &#x27;Duet this with your cafe!&#x27; text overlay to encourage participation, use timer sticker to verify your time, ask &#x27;can you beat our time?&#x27; in caption</li><li><strong>Instagram Reels:</strong> Cross-post to feed + Reels tab, tag your team members in caption, share to Stories with &#x27;link in bio&#x27; for full video</li></ul></td>
-            </tr>
-            <tr>
-                <td class="day-cell"><strong>Thursday</strong></td>
-                <td>Things We Love About Running a Cafe</td>
-                <td>6:00 PM</td>
-                <td>TikTok, Instagram Reels, YouTube Shorts</td>
-                <td><span class="badge" style="color:#7c3aed;background:#ede9fe">trending</span></td>
-                <td class="notes-cell">Evening post for after-work scrollers — relatable, feel-good content with trending sound<ul class="platform-tips"><li><strong>TikTok:</strong> Fast cuts synced to beat = higher retention, pin top comment asking &#x27;What&#x27;s YOUR favorite thing?&#x27;, use &#x27;Green Screen&#x27; duet for response videos</li><li><strong>Instagram Reels:</strong> This is a &#x27;save&#x27; magnet — encourage saves with &#x27;save this if you love coffee culture&#x27;, use 3 large + 2 medium hashtags only</li><li><strong>YouTube Shorts:</strong> Title: &#x27;5 Things Baristas LOVE About Coffee Shops&#x27; — listicle format ranks well, add end screen with &#x27;more barista content&#x27;</li></ul></td>
-            </tr>
-            <tr>
-                <td class="day-cell"><strong>Friday</strong></td>
-                <td>Falling in Love with Coffee (Valentine&#x27;s Edition)</td>
-                <td>5:00 PM</td>
-                <td>TikTok, Instagram Reels</td>
-                <td><span class="badge" style="color:#7c3aed;background:#ede9fe">trending</span></td>
-                <td class="notes-cell">Friday night wind-down content — Valentine&#x27;s angle extends shelf life even after Feb 14<ul class="platform-tips"><li><strong>TikTok:</strong> Charli XCX sound is HOT right now — sync heart pour reveal to the beat drop, add &#x27;singles club&#x27; in comments to drive engagement</li><li><strong>Instagram Reels:</strong> Use Valentine&#x27;s hashtags (#valentinesday #coffeelove), create custom thumbnail with heart latte art, boost with $10 promo to local audience</li></ul></td>
-            </tr>
-            <tr>
-                <td class="day-cell"><strong>Saturday</strong></td>
-                <td>Weekend Poll: What&#x27;s your Saturday coffee order?</td>
-                <td>10:00 AM</td>
-                <td>Instagram Stories</td>
-                <td><span class="badge" style="color:#b45309;background:#fef3c7">engagement</span></td>
-                <td class="notes-cell">Low-effort, high-engagement weekend content to keep momentum without heavy lifting<ul class="platform-tips"><li><strong>Instagram Stories:</strong> 3-slide series: 1) Poll sticker &#x27;Hot or Iced?&#x27;, 2) Question sticker &#x27;What&#x27;s your go-to order?&#x27;, 3) Share top answers with &#x27;visit us today!&#x27; CTA and location tag</li></ul></td>
-            </tr>
-            <tr>
-                <td class="day-cell"><strong>Sunday</strong></td>
-                <td>Rest / Analytics Review</td>
-                <td>—</td>
-                <td>—</td>
-                <td><span class="badge" style="color:#6b7280;background:#f3f4f6">rest</span></td>
-                <td class="notes-cell">Review weekly analytics: which Reels got most saves/shares/comments? Plan next week&#x27;s content accordingly. Repost top performer to Stories.</td>
-            </tr></tbody>
-            </table>
-        </div>
-    </section>
-    <section>
-        <h2>Reel Concepts</h2>
-        <div class="concepts-grid">
-        <div class="card">
-            <div class="card-header">
-                <h3>Reel #1: Cozy Morning Vibes at Our Cafe</h3>
-                <div class="card-badges"><span class="badge" style="color:#1e40af;background:#dbeafe">before/after</span> <span class="badge" style="color:#065f46;background:#d1fae5">easy</span> <span class="time-est">20 min</span></div>
-            </div>
-            <div class="card-body">
-                <div class="hook">
-                    <strong>Hook (first 3s):</strong> POV: You walked in stressed... 3 seconds later
-                </div>
-                <div class="script">
-                    <strong>Script:</strong>
-                    <ol><li>Open with handheld shot entering cafe (chaotic street outside)</li><li>Transition to smooth glide: barista preparing latte with steam rising</li><li>Close-up latte art pour in slow motion</li><li>Final shot: cozy corner with person relaxing, coffee in hand</li></ol>
-                </div>
-                <div class="detail-row">
-                    <span class="label">Sound:</span> Floating Dreams (Lofi) — ProdbyRich
-                </div>
-                <div class="detail-row">
-                    <span class="label">Caption:</span> Sometimes all you need is a good cup and a quiet corner ☕✨ Come find your peace at our cafe.
-                </div>
-                <div class="detail-row hashtags-tiered">
-                    <span class="label">Hashtags:</span> <span class="hashtag-tier"><span class="tier-label">Broad Reach:</span> <span class="hashtag">#coffeeshop</span> <span class="hashtag">#cafe</span></span> <span class="hashtag-tier"><span class="tier-label">Mid-Tier:</span> <span class="hashtag">#latteart</span> <span class="hashtag">#coffeelover</span></span> <span class="hashtag-tier"><span class="tier-label">Niche:</span> <span class="hashtag">#cozycafe</span></span> 
-                </div>
-                <div class="detail-row">
-                    <span class="label">CTA:</span> Tag someone who needs this vibe today
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <h3>Reel #2: Things We Love About Running a Cafe</h3>
-                <div class="card-badges"><span class="badge" style="color:#6d28d9;background:#f5f3ff">listicle</span> <span class="badge" style="color:#065f46;background:#d1fae5">easy</span> <span class="time-est">25 min</span></div>
-            </div>
-            <div class="card-body">
-                <div class="hook">
-                    <strong>Hook (first 3s):</strong> 5 things we love about being baristas 💕
-                </div>
-                <div class="script">
-                    <strong>Script:</strong>
-                    <ol><li>1. Perfecting latte art every morning (show heart design)</li><li>2. Seeing regulars light up when we remember their order</li><li>3. The smell of fresh espresso all day (barista smelling beans)</li><li>4. Creating new seasonal drinks (pouring colorful latte)</li><li>5. Being part of your morning routine (wave to camera)</li></ol>
-                </div>
-                <div class="detail-row">
-                    <span class="label">Sound:</span> I luv - Remastered Version — ASN JAYBOOG
-                </div>
-                <div class="detail-row">
-                    <span class="label">Caption:</span> Honestly, we couldn&#x27;t imagine doing anything else ☕❤️ What&#x27;s your favorite thing about coffee shop culture?
-                </div>
-                <div class="detail-row hashtags-tiered">
-                    <span class="label">Hashtags:</span> <span class="hashtag-tier"><span class="tier-label">Broad Reach:</span> <span class="hashtag">#barista</span> <span class="hashtag">#coffeeshop</span></span> <span class="hashtag-tier"><span class="tier-label">Mid-Tier:</span> <span class="hashtag">#baristalove</span> <span class="hashtag">#coffeeculture</span></span> <span class="hashtag-tier"><span class="tier-label">Niche:</span> <span class="hashtag">#coffeepassion</span></span> 
-                </div>
-                <div class="detail-row">
-                    <span class="label">CTA:</span> Comment your favorite cafe moment!
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <h3>Reel #3: Falling in Love with Coffee (Valentine&#x27;s Edition)</h3>
-                <div class="card-badges"><span class="badge" style="color:#a16207;background:#fef3c7">reveal</span> <span class="badge" style="color:#92400e;background:#fef3c7">medium</span> <span class="time-est">30 min</span></div>
-            </div>
-            <div class="card-body">
-                <div class="hook">
-                    <strong>Hook (first 3s):</strong> This Valentine&#x27;s, we&#x27;re showing our real valentine 👀
-                </div>
-                <div class="script">
-                    <strong>Script:</strong>
-                    <ol><li>Start with &#x27;our valentine this year is...&#x27; text overlay</li><li>Quick cuts: espresso pouring, milk steaming, latte art</li><li>Build up with fast transitions synced to beat</li><li>Final reveal: perfect heart-shaped latte art with steam</li></ol>
-                </div>
-                <div class="detail-row">
-                    <span class="label">Sound:</span> Chains of Love — Charli xcx
-                </div>
-                <div class="detail-row">
-                    <span class="label">Caption:</span> Coffee never lets us down 😍☕ Who else is in a committed relationship with caffeine? Happy Valentine&#x27;s Day!
-                </div>
-                <div class="detail-row hashtags-tiered">
-                    <span class="label">Hashtags:</span> <span class="hashtag-tier"><span class="tier-label">Broad Reach:</span> <span class="hashtag">#valentinesday</span> <span class="hashtag">#coffee</span></span> <span class="hashtag-tier"><span class="tier-label">Mid-Tier:</span> <span class="hashtag">#coffeelove</span> <span class="hashtag">#latteart</span></span> <span class="hashtag-tier"><span class="tier-label">Niche:</span> <span class="hashtag">#coffeevalentine</span></span> 
-                </div>
-                <div class="detail-row">
-                    <span class="label">CTA:</span> Double tap if coffee is your real Valentine
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <h3>Reel #4: Behind the Scenes: Opening Routine</h3>
-                <div class="card-badges"><span class="badge" style="color:#065f46;background:#d1fae5">tutorial</span> <span class="badge" style="color:#065f46;background:#d1fae5">easy</span> <span class="time-est">15 min</span></div>
-            </div>
-            <div class="card-body">
-                <div class="hook">
-                    <strong>Hook (first 3s):</strong> What it actually takes to open a cafe at 6 AM
-                </div>
-                <div class="script">
-                    <strong>Script:</strong>
-                    <ol><li>Dark cafe, unlock door (time stamp: 5:55 AM)</li><li>Grind fresh beans, prep espresso machine (6:00 AM)</li><li>Arrange pastries in display case (6:10 AM)</li><li>Final touches: lights on, sign flipped, first customer walks in (6:30 AM)</li></ol>
-                </div>
-                <div class="detail-row">
-                    <span class="label">Sound:</span> Angelpoise — Recitals
-                </div>
-                <div class="detail-row">
-                    <span class="label">Caption:</span> Early mornings hit different when you&#x27;re doing what you love ☕🌅 A peek at our opening routine.
-                </div>
-                <div class="detail-row hashtags-tiered">
-                    <span class="label">Hashtags:</span> <span class="hashtag-tier"><span class="tier-label">Broad Reach:</span> <span class="hashtag">#barista</span> <span class="hashtag">#coffeeshop</span></span> <span class="hashtag-tier"><span class="tier-label">Mid-Tier:</span> <span class="hashtag">#behindthescenes</span> <span class="hashtag">#morningroutine</span></span> <span class="hashtag-tier"><span class="tier-label">Niche:</span> <span class="hashtag">#coffeeprep</span></span> 
-                </div>
-                <div class="detail-row">
-                    <span class="label">CTA:</span> Follow for more behind-the-scenes content
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <h3>Reel #5: Morning Rush Energy</h3>
-                <div class="card-badges"><span class="badge" style="color:#b91c1c;background:#ffe4e6">challenge</span> <span class="badge" style="color:#92400e;background:#fef3c7">medium</span> <span class="time-est">30 min</span></div>
-            </div>
-            <div class="card-body">
-                <div class="hook">
-                    <strong>Hook (first 3s):</strong> Can we make 10 drinks in 2 minutes? Watch 👀
-                </div>
-                <div class="script">
-                    <strong>Script:</strong>
-                    <ol><li>Timer starts — barista calls out &#x27;here we go!&#x27;</li><li>Fast-paced montage: pulling shots, steaming milk, pouring drinks</li><li>Quick cuts synced to the beat showing speed and teamwork</li><li>Final shot: 10 drinks lined up, baristas high-five, timer shows 1:58</li></ol>
-                </div>
-                <div class="detail-row">
-                    <span class="label">Sound:</span> Mardi Gras Bounce — Big boss
-                </div>
-                <div class="detail-row">
-                    <span class="label">Caption:</span> When the morning rush hits DIFFERENT 🔥☕ Our team doesn&#x27;t play! Could you keep up?
-                </div>
-                <div class="detail-row hashtags-tiered">
-                    <span class="label">Hashtags:</span> <span class="hashtag-tier"><span class="tier-label">Broad Reach:</span> <span class="hashtag">#barista</span> <span class="hashtag">#coffeeshop</span></span> <span class="hashtag-tier"><span class="tier-label">Mid-Tier:</span> <span class="hashtag">#morningrush</span> <span class="hashtag">#teamwork</span></span> <span class="hashtag-tier"><span class="tier-label">Niche:</span> <span class="hashtag">#baristachallenge</span></span> 
-                </div>
-                <div class="detail-row">
-                    <span class="label">CTA:</span> Tag your local cafe to try this challenge!
-                </div>
-            </div>
-        </div></div>
+    <section class="empty-state">
+        <h2>No Data Available</h2>
+        <p>Run the pipeline first to generate data:</p>
+        <pre>python3 scripts/trend_scraper.py coffee_shop --country US
+python3 scripts/trend_filter.py
+python3 scripts/content_planner.py
+python3 scripts/report_generator.py</pre>
     </section>
     
     <section>
         <h2>Full Pipeline Data</h2>
         
     <details>
-        <summary>Filtered Trends — Top 10 Scored Trends</summary>
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th><th>Trend</th><th>Source</th><th>Type</th>
-                        <th>Overall</th><th>Rel</th><th>Viral</th><th>Diff</th><th>Time</th>
-                        <th>Suggested Angle</th>
-                    </tr>
-                </thead>
-                <tbody>
-            <tr>
-                <td>1</td>
-                <td>&#9835; Floating Dreams (Lofi)</td>
-                <td>tiktok</td>
-                <td>song</td>
-                <td><strong>9.6</strong></td>
-                <td>10</td>
-                <td>8</td>
-                <td>10</td>
-                <td>10</td>
-                <td class="notes-cell">Film a cozy morning latte art pour or cafe ambiance shot with this chill lofi track to capture the perfect &#x27;coffee shop study vibes&#x27; aesthetic.</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>&#9835; I luv - Remastered Version</td>
-                <td>tiktok</td>
-                <td>song</td>
-                <td><strong>9.5</strong></td>
-                <td>9</td>
-                <td>9</td>
-                <td>10</td>
-                <td>10</td>
-                <td class="notes-cell">Create a satisfying &#x27;things we love about our cafe&#x27; montage showing coffee prep, pastries, and happy customers to this upbeat track.</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>&#9835; Chains of Love</td>
-                <td>tiktok</td>
-                <td>song</td>
-                <td><strong>9.2</strong></td>
-                <td>8</td>
-                <td>9</td>
-                <td>10</td>
-                <td>10</td>
-                <td class="notes-cell">Use this trending Charli XCX track for a Valentine&#x27;s-themed &#x27;falling in love with coffee&#x27; transition reel or heart latte art compilation.</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>&#9835; Angelpoise</td>
-                <td>tiktok</td>
-                <td>song</td>
-                <td><strong>9.2</strong></td>
-                <td>9</td>
-                <td>8</td>
-                <td>10</td>
-                <td>10</td>
-                <td class="notes-cell">Showcase your morning setup routine or behind-the-scenes barista flow with this aesthetic indie track for a calming, relatable vibe.</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>&#9835; Mardi Gras Bounce</td>
-                <td>tiktok</td>
-                <td>song</td>
-                <td><strong>8.6</strong></td>
-                <td>7</td>
-                <td>9</td>
-                <td>9</td>
-                <td>10</td>
-                <td class="notes-cell">Create a fun, high-energy morning rush montage or introduce a limited-time New Orleans-inspired coffee or beignet special.</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>&#9835; Atleast</td>
-                <td>tiktok</td>
-                <td>song</td>
-                <td><strong>9.2</strong></td>
-                <td>8</td>
-                <td>9</td>
-                <td>10</td>
-                <td>10</td>
-                <td class="notes-cell">Use this trending audio for a relatable &#x27;at least we have coffee&#x27; comedy skit or Monday morning mood reel.</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>&#9835; #stopmotion</td>
-                <td>tiktok</td>
-                <td>hashtag</td>
-                <td><strong>8.1</strong></td>
-                <td>10</td>
-                <td>7</td>
-                <td>6</td>
-                <td>8</td>
-                <td class="notes-cell">Create a stop-motion video of coffee beans becoming espresso or a latte art transformation for a unique, shareable format.</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>&#9835; #home</td>
-                <td>tiktok</td>
-                <td>hashtag</td>
-                <td><strong>8.7</strong></td>
-                <td>9</td>
-                <td>10</td>
-                <td>10</td>
-                <td>5</td>
-                <td class="notes-cell">Position your cafe as a &#x27;home away from home&#x27; with cozy corner shots, regulars chatting, or a &#x27;our cafe family&#x27; community spotlight.</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>&#9835; #teamworkmakesthedreamwork</td>
-                <td>tiktok</td>
-                <td>hashtag</td>
-                <td><strong>7.5</strong></td>
-                <td>10</td>
-                <td>6</td>
-                <td>10</td>
-                <td>3</td>
-                <td class="notes-cell">Showcase your barista team working together during the morning rush with synchronized coffee-making or a fun team intro reel.</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>&#9835; #livewithlowfollowers</td>
-                <td>tiktok</td>
-                <td>hashtag</td>
-                <td><strong>7.5</strong></td>
-                <td>7</td>
-                <td>6</td>
-                <td>10</td>
-                <td>8</td>
-                <td class="notes-cell">Go live during your morning shift to show real-time latte art, answer coffee questions, and engage with local community followers.</td>
-            </tr></tbody>
-            </table>
-        </div>
-    </details>
-    <details>
-        <summary>Trend Discovery — 50 Signals Collected</summary>
+        <summary>Trend Discovery — 89 Signals Collected</summary>
         <div class="summary-pills">
-            <strong>By source:</strong> <span class="pill">&#9835; tiktok: 40</span> <span class="pill">&#128270; google_trends: 10</span>
-            &nbsp;&nbsp;<strong>By type:</strong> <span class="pill">hashtag: 20</span> <span class="pill">song: 10</span> <span class="pill">video: 10</span> <span class="pill">search_trend: 10</span>
+            <strong>By source:</strong> <span class="pill">&#9835; tiktok: 40</span> <span class="pill">&#128270; google_trends: 10</span> <span class="pill">&#9650; reddit: 39</span>
+            &nbsp;&nbsp;<strong>By type:</strong> <span class="pill">hashtag: 20</span> <span class="pill">song: 10</span> <span class="pill">video: 10</span> <span class="pill">search_trend: 10</span> <span class="pill">reddit_post: 39</span>
         </div>
         <div class="table-wrap">
             <table>
@@ -591,8 +508,8 @@ footer {
                 <td>hashtag</td>
                 <td>9.7M</td>
                 <td>+51</td>
-                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,12.0 26.7,2.0 40.0,14.5 53.3,12.6 66.7,9.5 80.0,10.8" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,12.0 26.7,2.0 40.0,14.5 53.3,12.6 66.7,9.5 80.0,10.8 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,12.0 26.7,2.0 40.0,14.5 53.3,12.6 66.7,9.5 80.0,10.8" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -600,8 +517,8 @@ footer {
                 <td>hashtag</td>
                 <td>963.3M</td>
                 <td>0</td>
-                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,9.3 13.3,3.8 26.7,2.0 40.0,22.0 53.3,20.2 66.7,21.1 80.0,21.1" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,9.3 13.3,3.8 26.7,2.0 40.0,22.0 53.3,20.2 66.7,21.1 80.0,21.1 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,9.3 13.3,3.8 26.7,2.0 40.0,22.0 53.3,20.2 66.7,21.1 80.0,21.1" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -609,8 +526,8 @@ footer {
                 <td>hashtag</td>
                 <td>243.3M</td>
                 <td>+3</td>
-                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,6.3 26.7,9.1 40.0,14.9 53.3,17.7 66.7,19.1 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,6.3 26.7,9.1 40.0,14.9 53.3,17.7 66.7,19.1 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,6.3 26.7,9.1 40.0,14.9 53.3,17.7 66.7,19.1 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -618,8 +535,8 @@ footer {
                 <td>hashtag</td>
                 <td>121.8M</td>
                 <td>0</td>
-                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,13.4 13.3,4.9 26.7,2.0 40.0,13.4 53.3,10.6 66.7,22.0 80.0,16.3" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,13.4 13.3,4.9 26.7,2.0 40.0,13.4 53.3,10.6 66.7,22.0 80.0,16.3 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,13.4 13.3,4.9 26.7,2.0 40.0,13.4 53.3,10.6 66.7,22.0 80.0,16.3" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -627,8 +544,8 @@ footer {
                 <td>hashtag</td>
                 <td>3.1B</td>
                 <td>+2</td>
-                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,4.1 26.7,7.7 40.0,14.9 53.3,16.3 66.7,19.9 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,4.1 26.7,7.7 40.0,14.9 53.3,16.3 66.7,19.9 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,4.1 26.7,7.7 40.0,14.9 53.3,16.3 66.7,19.9 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -636,8 +553,8 @@ footer {
                 <td>hashtag</td>
                 <td>44.1M</td>
                 <td>+47</td>
-                <td><span class="badge" style="color:#7c2d12;background:#ffe4e6">SPIKE</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,8.7 13.3,4.1 26.7,2.0 40.0,20.6 53.3,21.5 66.7,21.8 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#f87171;background:rgba(248,113,113,0.12);border-color:rgba(248,113,113,0.25)">SPIKE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,8.7 13.3,4.1 26.7,2.0 40.0,20.6 53.3,21.5 66.7,21.8 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,8.7 13.3,4.1 26.7,2.0 40.0,20.6 53.3,21.5 66.7,21.8 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -645,8 +562,8 @@ footer {
                 <td>hashtag</td>
                 <td>1.5B</td>
                 <td>+10</td>
-                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,5.2 26.7,9.4 40.0,15.2 53.3,16.7 66.7,18.3 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,5.2 26.7,9.4 40.0,15.2 53.3,16.7 66.7,18.3 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,5.2 26.7,9.4 40.0,15.2 53.3,16.7 66.7,18.3 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -654,8 +571,8 @@ footer {
                 <td>hashtag</td>
                 <td>1.0B</td>
                 <td>+15</td>
-                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,5.6 26.7,8.7 40.0,13.5 53.3,14.1 66.7,17.2 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,5.6 26.7,8.7 40.0,13.5 53.3,14.1 66.7,17.2 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,5.6 26.7,8.7 40.0,13.5 53.3,14.1 66.7,17.2 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -663,8 +580,8 @@ footer {
                 <td>hashtag</td>
                 <td>34.1M</td>
                 <td>0</td>
-                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,20.0 13.3,21.2 26.7,19.5 40.0,2.0 53.3,16.4 66.7,20.7 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,20.0 13.3,21.2 26.7,19.5 40.0,2.0 53.3,16.4 66.7,20.7 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,20.0 13.3,21.2 26.7,19.5 40.0,2.0 53.3,16.4 66.7,20.7 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -672,8 +589,8 @@ footer {
                 <td>hashtag</td>
                 <td>491.5M</td>
                 <td>0</td>
-                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,17.0 13.3,2.0 26.7,2.0 40.0,15.9 53.3,18.8 66.7,20.2 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,17.0 13.3,2.0 26.7,2.0 40.0,15.9 53.3,18.8 66.7,20.2 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,17.0 13.3,2.0 26.7,2.0 40.0,15.9 53.3,18.8 66.7,20.2 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -681,8 +598,8 @@ footer {
                 <td>hashtag</td>
                 <td>880.1M</td>
                 <td>+20</td>
-                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,4.9 26.7,9.6 40.0,14.9 53.3,19.1 66.7,20.2 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,4.9 26.7,9.6 40.0,14.9 53.3,19.1 66.7,20.2 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,4.9 26.7,9.6 40.0,14.9 53.3,19.1 66.7,20.2 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -690,8 +607,8 @@ footer {
                 <td>hashtag</td>
                 <td>9.5M</td>
                 <td>0</td>
-                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,9.6 13.3,2.0 26.7,14.4 40.0,22.0 53.3,15.8 66.7,17.9 80.0,17.9" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,9.6 13.3,2.0 26.7,14.4 40.0,22.0 53.3,15.8 66.7,17.9 80.0,17.9 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,9.6 13.3,2.0 26.7,14.4 40.0,22.0 53.3,15.8 66.7,17.9 80.0,17.9" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -699,8 +616,8 @@ footer {
                 <td>hashtag</td>
                 <td>29.8M</td>
                 <td>0</td>
-                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,11.4 13.3,19.6 26.7,22.0 40.0,20.8 53.3,19.6 66.7,2.0 80.0,7.9" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,11.4 13.3,19.6 26.7,22.0 40.0,20.8 53.3,19.6 66.7,2.0 80.0,7.9 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,11.4 13.3,19.6 26.7,22.0 40.0,20.8 53.3,19.6 66.7,2.0 80.0,7.9" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -708,8 +625,8 @@ footer {
                 <td>hashtag</td>
                 <td>467.2M</td>
                 <td>0</td>
-                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,19.4 26.7,7.2 40.0,9.1 53.3,22.0 66.7,22.0 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,19.4 26.7,7.2 40.0,9.1 53.3,22.0 66.7,22.0 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,19.4 26.7,7.2 40.0,9.1 53.3,22.0 66.7,22.0 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -717,8 +634,8 @@ footer {
                 <td>hashtag</td>
                 <td>96.0M</td>
                 <td>+34</td>
-                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,10.5 26.7,11.2 40.0,12.8 53.3,19.7 66.7,22.0 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,10.5 26.7,11.2 40.0,12.8 53.3,19.7 66.7,22.0 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,10.5 26.7,11.2 40.0,12.8 53.3,19.7 66.7,22.0 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -726,8 +643,8 @@ footer {
                 <td>hashtag</td>
                 <td>186.1M</td>
                 <td>0</td>
-                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,5.6 13.3,2.0 26.7,6.5 40.0,2.0 53.3,12.9 66.7,16.5 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,5.6 13.3,2.0 26.7,6.5 40.0,2.0 53.3,12.9 66.7,16.5 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,5.6 13.3,2.0 26.7,6.5 40.0,2.0 53.3,12.9 66.7,16.5 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -735,8 +652,8 @@ footer {
                 <td>hashtag</td>
                 <td>790.2M</td>
                 <td>0</td>
-                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,18.7 13.3,17.6 26.7,12.7 40.0,2.0 53.3,16.4 66.7,20.4 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,18.7 13.3,17.6 26.7,12.7 40.0,2.0 53.3,16.4 66.7,20.4 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,18.7 13.3,17.6 26.7,12.7 40.0,2.0 53.3,16.4 66.7,20.4 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -744,8 +661,8 @@ footer {
                 <td>hashtag</td>
                 <td>268.1M</td>
                 <td>+40</td>
-                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,6.0 26.7,8.7 40.0,18.0 53.3,18.0 66.7,19.3 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,6.0 26.7,8.7 40.0,18.0 53.3,18.0 66.7,19.3 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,6.0 26.7,8.7 40.0,18.0 53.3,18.0 66.7,19.3 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -753,8 +670,8 @@ footer {
                 <td>hashtag</td>
                 <td>364.6M</td>
                 <td>0</td>
-                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,9.1 26.7,12.6 40.0,13.8 53.3,14.9 66.7,20.8 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,9.1 26.7,12.6 40.0,13.8 53.3,14.9 66.7,20.8 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,9.1 26.7,12.6 40.0,13.8 53.3,14.9 66.7,20.8 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -762,8 +679,8 @@ footer {
                 <td>hashtag</td>
                 <td>52.7M</td>
                 <td>0</td>
-                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,11.0 13.3,19.2 26.7,19.9 40.0,22.0 53.3,22.0 66.7,20.6 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,11.0 13.3,19.2 26.7,19.9 40.0,22.0 53.3,22.0 66.7,20.6 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,11.0 13.3,19.2 26.7,19.9 40.0,22.0 53.3,22.0 66.7,20.6 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -771,8 +688,8 @@ footer {
                 <td>song</td>
                 <td>—</td>
                 <td>0</td>
-                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,21.1 13.3,22.0 26.7,20.7 40.0,16.8 53.3,13.0 66.7,13.6 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,21.1 13.3,22.0 26.7,20.7 40.0,16.8 53.3,13.0 66.7,13.6 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,21.1 13.3,22.0 26.7,20.7 40.0,16.8 53.3,13.0 66.7,13.6 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -780,8 +697,8 @@ footer {
                 <td>song</td>
                 <td>—</td>
                 <td>+1</td>
-                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,21.8 13.3,22.0 26.7,21.4 40.0,20.3 53.3,16.3 66.7,3.7 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,21.8 13.3,22.0 26.7,21.4 40.0,20.3 53.3,16.3 66.7,3.7 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,21.8 13.3,22.0 26.7,21.4 40.0,20.3 53.3,16.3 66.7,3.7 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -789,8 +706,8 @@ footer {
                 <td>song</td>
                 <td>—</td>
                 <td>+58</td>
-                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,22.0 26.7,21.8 40.0,21.8 53.3,21.6 66.7,19.4 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,22.0 26.7,21.8 40.0,21.8 53.3,21.6 66.7,19.4 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,22.0 26.7,21.8 40.0,21.8 53.3,21.6 66.7,19.4 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -798,8 +715,8 @@ footer {
                 <td>song</td>
                 <td>—</td>
                 <td>+24</td>
-                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,22.0 26.7,21.8 40.0,21.8 53.3,21.6 66.7,16.2 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,22.0 26.7,21.8 40.0,21.8 53.3,21.6 66.7,16.2 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,22.0 26.7,21.8 40.0,21.8 53.3,21.6 66.7,16.2 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -807,8 +724,8 @@ footer {
                 <td>song</td>
                 <td>—</td>
                 <td>+1</td>
-                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,18.4 26.7,2.0 40.0,2.7 53.3,4.1 66.7,3.1 80.0,2.7" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,18.4 26.7,2.0 40.0,2.7 53.3,4.1 66.7,3.1 80.0,2.7 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,18.4 26.7,2.0 40.0,2.7 53.3,4.1 66.7,3.1 80.0,2.7" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -816,8 +733,8 @@ footer {
                 <td>song</td>
                 <td>—</td>
                 <td>+8</td>
-                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,21.8 26.7,19.4 40.0,16.3 53.3,10.9 66.7,8.4 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,21.8 26.7,19.4 40.0,16.3 53.3,10.9 66.7,8.4 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,21.8 26.7,19.4 40.0,16.3 53.3,10.9 66.7,8.4 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -825,8 +742,8 @@ footer {
                 <td>song</td>
                 <td>—</td>
                 <td>+8</td>
-                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,22.0 26.7,15.7 40.0,14.0 53.3,12.5 66.7,8.8 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,22.0 26.7,15.7 40.0,14.0 53.3,12.5 66.7,8.8 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,22.0 26.7,15.7 40.0,14.0 53.3,12.5 66.7,8.8 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -834,8 +751,8 @@ footer {
                 <td>song</td>
                 <td>—</td>
                 <td>+8</td>
-                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,21.5 26.7,17.0 40.0,13.2 53.3,13.7 66.7,9.9 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,21.5 26.7,17.0 40.0,13.2 53.3,13.7 66.7,9.9 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,21.5 26.7,17.0 40.0,13.2 53.3,13.7 66.7,9.9 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -843,8 +760,8 @@ footer {
                 <td>song</td>
                 <td>—</td>
                 <td>+2</td>
-                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,21.8 26.7,18.5 40.0,12.8 53.3,6.1 66.7,2.8 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,21.8 26.7,18.5 40.0,12.8 53.3,6.1 66.7,2.8 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,21.8 26.7,18.5 40.0,12.8 53.3,6.1 66.7,2.8 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr>
             <tr>
                 <td>&#9835; tiktok</td>
@@ -852,16 +769,17 @@ footer {
                 <td>song</td>
                 <td>—</td>
                 <td>NEW</td>
-                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
-                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,22.0 26.7,19.4 40.0,14.7 53.3,11.2 66.7,2.0 80.0,4.2" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,22.0 26.7,19.4 40.0,14.7 53.3,11.2 66.7,2.0 80.0,4.2 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,22.0 26.7,19.4 40.0,14.7 53.3,11.2 66.7,2.0 80.0,4.2" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
             </tr></tbody>
             </table>
         </div>
-        <p class="muted">Showing top 30 of 50 trends.</p>
+        <p class="muted">Showing top 30 of 89 trends.</p>
     </details>
     </section>
+    </div>
     <footer>
-        Generated by Social Media Strategist Agent &middot; 2026-02-19 22:16 UTC
+        Generated by <span>Social Media Strategist Agent</span> &middot; 2026-02-19 22:23 UTC
     </footer>
 </body>
 </html>

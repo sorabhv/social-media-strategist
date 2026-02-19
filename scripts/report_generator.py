@@ -99,52 +99,52 @@ def format_views(n) -> str:
 
 def trajectory_badge(t: str) -> str:
     colors = {
-        "RISING": ("#065f46", "#d1fae5"),
-        "STABLE": ("#1e40af", "#dbeafe"),
-        "DECLINING": ("#92400e", "#fef3c7"),
-        "SPIKE": ("#7c2d12", "#ffe4e6"),
-        "FLAT": ("#6b7280", "#f3f4f6"),
-        "UNKNOWN": ("#6b7280", "#f3f4f6"),
+        "RISING": ("#34d399", "rgba(16,185,129,0.12)", "rgba(16,185,129,0.25)"),
+        "STABLE": ("#60a5fa", "rgba(59,130,246,0.12)", "rgba(59,130,246,0.25)"),
+        "DECLINING": ("#fbbf24", "rgba(245,158,11,0.12)", "rgba(245,158,11,0.25)"),
+        "SPIKE": ("#f87171", "rgba(248,113,113,0.12)", "rgba(248,113,113,0.25)"),
+        "FLAT": ("#9ca3af", "rgba(156,163,175,0.1)", "rgba(156,163,175,0.2)"),
+        "UNKNOWN": ("#9ca3af", "rgba(156,163,175,0.1)", "rgba(156,163,175,0.2)"),
     }
-    fg, bg = colors.get(t, colors["UNKNOWN"])
-    return f'<span class="badge" style="color:{fg};background:{bg}">{escape(t)}</span>'
+    fg, bg, border = colors.get(t, colors["UNKNOWN"])
+    return f'<span class="badge" style="color:{fg};background:{bg};border-color:{border}">{escape(t)}</span>'
 
 
 def difficulty_badge(d: str) -> str:
     colors = {
-        "easy": ("#065f46", "#d1fae5"),
-        "medium": ("#92400e", "#fef3c7"),
-        "hard": ("#991b1b", "#ffe4e6"),
+        "easy": ("#34d399", "rgba(16,185,129,0.12)", "rgba(16,185,129,0.25)"),
+        "medium": ("#fbbf24", "rgba(245,158,11,0.12)", "rgba(245,158,11,0.25)"),
+        "hard": ("#f87171", "rgba(248,113,113,0.12)", "rgba(248,113,113,0.25)"),
     }
-    fg, bg = colors.get(d, ("#6b7280", "#f3f4f6"))
-    return f'<span class="badge" style="color:{fg};background:{bg}">{escape(d)}</span>'
+    fg, bg, border = colors.get(d, ("#9ca3af", "rgba(156,163,175,0.1)", "rgba(156,163,175,0.2)"))
+    return f'<span class="badge" style="color:{fg};background:{bg};border-color:{border}">{escape(d)}</span>'
 
 
 def content_type_badge(ct: str) -> str:
     colors = {
-        "trending": ("#7c3aed", "#ede9fe"),
-        "evergreen": ("#065f46", "#d1fae5"),
-        "engagement": ("#b45309", "#fef3c7"),
-        "rest": ("#6b7280", "#f3f4f6"),
-        "promo": ("#1e40af", "#dbeafe"),
+        "trending": ("#c084fc", "rgba(139,92,246,0.12)", "rgba(139,92,246,0.25)"),
+        "evergreen": ("#34d399", "rgba(16,185,129,0.12)", "rgba(16,185,129,0.25)"),
+        "engagement": ("#fbbf24", "rgba(245,158,11,0.12)", "rgba(245,158,11,0.25)"),
+        "rest": ("#9ca3af", "rgba(156,163,175,0.1)", "rgba(156,163,175,0.2)"),
+        "promo": ("#60a5fa", "rgba(59,130,246,0.12)", "rgba(59,130,246,0.25)"),
     }
-    fg, bg = colors.get(ct, ("#6b7280", "#f3f4f6"))
-    return f'<span class="badge" style="color:{fg};background:{bg}">{escape(ct)}</span>'
+    fg, bg, border = colors.get(ct, ("#9ca3af", "rgba(156,163,175,0.1)", "rgba(156,163,175,0.2)"))
+    return f'<span class="badge" style="color:{fg};background:{bg};border-color:{border}">{escape(ct)}</span>'
 
 
 def hook_pattern_badge(hp: str) -> str:
     colors = {
-        "question": ("#7c3aed", "#ede9fe"),
-        "challenge": ("#b91c1c", "#ffe4e6"),
-        "controversy": ("#c2410c", "#fff7ed"),
-        "tutorial": ("#065f46", "#d1fae5"),
-        "before_after": ("#1e40af", "#dbeafe"),
-        "reveal": ("#a16207", "#fef3c7"),
-        "listicle": ("#6d28d9", "#f5f3ff"),
+        "question": ("#c084fc", "rgba(139,92,246,0.12)", "rgba(139,92,246,0.25)"),
+        "challenge": ("#f87171", "rgba(248,113,113,0.12)", "rgba(248,113,113,0.25)"),
+        "controversy": ("#fb923c", "rgba(251,146,60,0.12)", "rgba(251,146,60,0.25)"),
+        "tutorial": ("#34d399", "rgba(16,185,129,0.12)", "rgba(16,185,129,0.25)"),
+        "before_after": ("#60a5fa", "rgba(59,130,246,0.12)", "rgba(59,130,246,0.25)"),
+        "reveal": ("#fbbf24", "rgba(245,158,11,0.12)", "rgba(245,158,11,0.25)"),
+        "listicle": ("#a78bfa", "rgba(167,139,250,0.12)", "rgba(167,139,250,0.25)"),
     }
-    fg, bg = colors.get(hp, ("#6b7280", "#f3f4f6"))
+    fg, bg, border = colors.get(hp, ("#9ca3af", "rgba(156,163,175,0.1)", "rgba(156,163,175,0.2)"))
     label = hp.replace("_", "/") if hp else "—"
-    return f'<span class="badge" style="color:{fg};background:{bg}">{escape(label)}</span>'
+    return f'<span class="badge" style="color:{fg};background:{bg};border-color:{border}">{escape(label)}</span>'
 
 
 def source_icon(src: str) -> str:
@@ -163,10 +163,18 @@ def sparkline_svg(values: list[float], width: int = 80, height: int = 24) -> str
         y = height - ((v - mn) / rng) * (height - 4) - 2
         points.append(f"{x:.1f},{y:.1f}")
     poly = " ".join(points)
+    # Build a gradient fill area
+    last_x = (len(values) - 1) / (len(values) - 1) * width
+    area_points = poly + f" {last_x:.1f},{height} 0,{height}"
     return (
         f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" '
         f'style="vertical-align:middle">'
-        f'<polyline points="{poly}" fill="none" stroke="#6366f1" stroke-width="2" '
+        f'<defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">'
+        f'<stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/>'
+        f'<stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>'
+        f'</linearGradient></defs>'
+        f'<polygon points="{area_points}" fill="url(#sg)"/>'
+        f'<polyline points="{poly}" fill="none" stroke="#a78bfa" stroke-width="2" '
         f'stroke-linecap="round" stroke-linejoin="round"/></svg>'
     )
 
@@ -204,8 +212,10 @@ def render_header(trends: dict | None, content_plan: dict | None) -> str:
 
     return f"""
     <header>
-        <h1>Social Media Content Plan</h1>
-        <p class="meta">{escape(biz)} &middot; {escape(country)} &middot; {date_str}{total}</p>
+        <div class="header-inner">
+            <h1>Social Media Content Plan</h1>
+            <p class="meta">{escape(biz)} &middot; {escape(country)} &middot; {date_str}{total}</p>
+        </div>
     </header>"""
 
 
@@ -214,7 +224,7 @@ def render_calendar(content_plan: dict) -> str:
     if not calendar:
         return ""
 
-    rows = ""
+    cards = ""
     for day in calendar:
         platforms = ", ".join(day.get("platforms", [])) or "—"
         time_str = day.get("time") or "—"
@@ -232,30 +242,24 @@ def render_calendar(content_plan: dict) -> str:
             if tip_items:
                 tips_html = f'<ul class="platform-tips">{tip_items}</ul>'
 
-        rows += f"""
-            <tr>
-                <td class="day-cell"><strong>{escape(day.get('day', ''))}</strong></td>
-                <td>{escape(title)}</td>
-                <td>{escape(time_str)}</td>
-                <td>{escape(platforms)}</td>
-                <td>{content_type_badge(ct)}</td>
-                <td class="notes-cell">{escape(notes)}{tips_html}</td>
-            </tr>"""
+        notes_html = f'<div class="cal-notes">{escape(notes)}{tips_html}</div>' if notes or tips_html else ""
+
+        cards += f"""
+            <div class="cal-card type-{escape(ct)}">
+                <div class="cal-day">{escape(day.get('day', ''))}</div>
+                <div class="cal-title">{escape(title)}</div>
+                <div class="cal-meta">
+                    <span class="cal-chip">&#128337; {escape(time_str)}</span>
+                    <span class="cal-chip">{escape(platforms)}</span>
+                    {content_type_badge(ct)}
+                </div>
+                {notes_html}
+            </div>"""
 
     return f"""
     <section>
         <h2>Weekly Calendar</h2>
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Day</th><th>Content</th><th>Time</th>
-                        <th>Platforms</th><th>Type</th><th>Notes / Platform Tips</th>
-                    </tr>
-                </thead>
-                <tbody>{rows}</tbody>
-            </table>
-        </div>
+        <div class="calendar-grid">{cards}</div>
     </section>"""
 
 
@@ -309,7 +313,7 @@ def render_reel_concepts(content_plan: dict) -> str:
                     <ol>{steps_html}</ol>
                 </div>
                 <div class="detail-row">
-                    <span class="label">Sound:</span> {f'<a href="{escape(sound_link)}" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">{escape(sound)} &#127925;</a>' if sound_link else escape(sound)}
+                    <span class="label">Sound:</span> {f'<a href="{escape(sound_link)}" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)">{escape(sound)} &#127925;</a>' if sound_link else escape(sound)}
                 </div>
                 <div class="detail-row">
                     <span class="label">Caption:</span> {escape(caption)}
@@ -439,213 +443,463 @@ python3 scripts/report_generator.py</pre>
 
 
 CSS = """
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 :root {
-    --bg: #f8fafc;
-    --surface: #ffffff;
-    --border: #e2e8f0;
-    --text: #1e293b;
-    --text-muted: #64748b;
-    --accent: #6366f1;
-    --accent-light: #eef2ff;
-    --radius: 10px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+    --bg: #0f0f13;
+    --bg-secondary: #16161d;
+    --surface: rgba(255,255,255,0.04);
+    --surface-hover: rgba(255,255,255,0.07);
+    --surface-solid: #1c1c26;
+    --border: rgba(255,255,255,0.08);
+    --border-light: rgba(255,255,255,0.05);
+    --text: #e8e8ed;
+    --text-secondary: #a0a0b0;
+    --text-muted: #6b6b80;
+    --accent: #8b5cf6;
+    --accent-light: rgba(139,92,246,0.12);
+    --accent-glow: rgba(139,92,246,0.25);
+    --pink: #ec4899;
+    --pink-light: rgba(236,72,153,0.12);
+    --amber: #f59e0b;
+    --amber-light: rgba(245,158,11,0.12);
+    --emerald: #10b981;
+    --emerald-light: rgba(16,185,129,0.12);
+    --blue: #3b82f6;
+    --blue-light: rgba(59,130,246,0.12);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
+    --gradient-hero: linear-gradient(135deg, #1a1033 0%, #0f0f13 50%, #0d1117 100%);
+    --gradient-card: linear-gradient(135deg, rgba(139,92,246,0.06) 0%, rgba(236,72,153,0.03) 100%);
 }
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.6;
-    padding: 2rem 1rem;
-    max-width: 1100px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.page-wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+}
+
+/* ---- HERO HEADER ---- */
+header {
+    background: var(--gradient-hero);
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 1.5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+header::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+header::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(236,72,153,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+header .header-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1140px;
     margin: 0 auto;
 }
-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 2px solid var(--border);
-}
 header h1 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 0.3rem;
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #c084fc 0%, #f472b6 50%, #fb923c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.6rem;
 }
-.meta { color: var(--text-muted); font-size: 0.95rem; }
+.meta {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 400;
+}
 .subtitle {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     background: var(--accent-light);
     color: var(--accent);
-    padding: 2px 10px;
-    border-radius: 12px;
-    font-size: 0.8rem;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
     margin-left: 0.5rem;
     font-weight: 600;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(139,92,246,0.2);
 }
-section { margin-bottom: 2.5rem; }
+
+/* ---- SECTION ---- */
+section { margin-bottom: 3rem; }
 h2 {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     color: var(--text);
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--accent-light);
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
 }
-.table-wrap { overflow-x: auto; }
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.2em;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--pink));
+    flex-shrink: 0;
+}
+
+/* ---- CALENDAR ---- */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+.cal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+.cal-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+}
+.cal-card:hover {
+    border-color: rgba(139,92,246,0.3);
+    background: var(--surface-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(139,92,246,0.1);
+}
+.cal-card.type-trending::before { background: linear-gradient(90deg, var(--accent), var(--pink)); }
+.cal-card.type-evergreen::before { background: linear-gradient(90deg, var(--emerald), #34d399); }
+.cal-card.type-engagement::before { background: linear-gradient(90deg, var(--amber), #fbbf24); }
+.cal-card.type-rest::before { background: linear-gradient(90deg, #6b7280, #9ca3af); }
+.cal-card.type-promo::before { background: linear-gradient(90deg, var(--blue), #60a5fa); }
+.cal-day {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+.cal-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+.cal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+.cal-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.04);
+    padding: 3px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+}
+.cal-chip svg { width: 12px; height: 12px; opacity: 0.6; }
+
+/* ---- TABLE (for details/trends) ---- */
+.table-wrap { overflow-x: auto; border-radius: var(--radius-sm); }
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.88rem;
-    background: var(--surface);
-    border-radius: var(--radius);
+    font-size: 0.84rem;
+    background: var(--surface-solid);
+    border-radius: var(--radius-sm);
     overflow: hidden;
-    box-shadow: var(--shadow);
 }
 th {
-    background: var(--accent-light);
-    color: var(--accent);
+    background: rgba(255,255,255,0.04);
+    color: var(--text-muted);
     font-weight: 600;
     text-align: left;
-    padding: 0.65rem 0.75rem;
+    padding: 0.7rem 0.85rem;
     white-space: nowrap;
-    font-size: 0.82rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--border);
 }
 td {
-    padding: 0.6rem 0.75rem;
-    border-top: 1px solid var(--border);
+    padding: 0.65rem 0.85rem;
+    border-top: 1px solid var(--border-light);
     vertical-align: top;
+    color: var(--text-secondary);
 }
-tr:hover td { background: #fafaff; }
-.day-cell { white-space: nowrap; min-width: 80px; }
-.notes-cell { color: var(--text-muted); font-size: 0.82rem; max-width: 250px; }
+tr:hover td { background: rgba(139,92,246,0.04); }
+.day-cell { white-space: nowrap; min-width: 80px; color: var(--text); }
+.notes-cell { color: var(--text-muted); font-size: 0.8rem; max-width: 280px; }
+
+/* ---- BADGES ---- */
 .badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.04em;
+    border: 1px solid transparent;
 }
-.concepts-grid { display: flex; flex-direction: column; gap: 1.2rem; }
+
+/* ---- CONCEPT CARDS ---- */
+.concepts-grid { display: flex; flex-direction: column; gap: 1.5rem; }
 .card {
-    background: var(--surface);
+    background: var(--gradient-card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     overflow: hidden;
+    transition: all 0.25s ease;
+}
+.card:hover {
+    border-color: rgba(139,92,246,0.25);
+    box-shadow: var(--shadow-lg), 0 0 40px rgba(139,92,246,0.06);
 }
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 1.2rem;
-    background: var(--accent-light);
+    padding: 1rem 1.5rem;
+    background: rgba(255,255,255,0.02);
     border-bottom: 1px solid var(--border);
 }
 .card-header h3 {
-    font-size: 1rem;
-    color: var(--accent);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
     margin: 0;
+    letter-spacing: -0.01em;
 }
-.card-badges { display: flex; align-items: center; gap: 0.5rem; }
-.time-est { font-size: 0.8rem; color: var(--text-muted); }
-.card-body { padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.card-badges { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+.time-est {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.card-body {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
 .hook {
-    background: #fffbeb;
-    padding: 0.5rem 0.75rem;
-    border-radius: 6px;
-    border-left: 3px solid #f59e0b;
-    font-size: 0.9rem;
+    background: rgba(245,158,11,0.08);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--amber);
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.5;
 }
-.script ol { padding-left: 1.5rem; margin-top: 0.3rem; }
-.script li { margin-bottom: 0.2rem; font-size: 0.88rem; }
-.detail-row { font-size: 0.88rem; }
-.label { font-weight: 600; color: var(--text-muted); }
+.hook strong { color: var(--amber); font-weight: 600; }
+.script { background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); padding: 0.8rem 1rem; }
+.script strong { color: var(--text-secondary); font-weight: 600; font-size: 0.84rem; }
+.script ol { padding-left: 1.5rem; margin-top: 0.4rem; }
+.script li {
+    margin-bottom: 0.35rem;
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.script li::marker { color: var(--accent); font-weight: 600; }
+.detail-row {
+    font-size: 0.86rem;
+    padding: 0.3rem 0;
+    color: var(--text-secondary);
+}
+.label {
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-right: 0.3rem;
+}
 .hashtag {
     display: inline-block;
     background: var(--accent-light);
     color: var(--accent);
-    padding: 1px 7px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    margin: 1px 2px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    margin: 2px 3px;
+    border: 1px solid rgba(139,92,246,0.15);
+    font-weight: 500;
+    transition: all 0.15s ease;
 }
+.hashtag:hover { background: rgba(139,92,246,0.2); }
+
+/* ---- DETAILS / EXPANDABLE ---- */
 details {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     margin-bottom: 1.2rem;
+    overflow: hidden;
 }
 details summary {
-    padding: 0.8rem 1.2rem;
+    padding: 1rem 1.5rem;
     font-weight: 600;
     cursor: pointer;
-    color: var(--accent);
+    color: var(--text);
     font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.15s ease;
 }
-details summary:hover { background: var(--accent-light); }
+details summary::before {
+    content: '\\25B6';
+    font-size: 0.6rem;
+    color: var(--accent);
+    transition: transform 0.2s ease;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { background: var(--surface-hover); }
 details[open] summary { border-bottom: 1px solid var(--border); }
-details > :not(summary) { padding: 0 1.2rem; }
+details > :not(summary) { padding: 0 1.5rem; }
 details table { box-shadow: none; }
-details .table-wrap { margin: 0.8rem 0; }
-.summary-pills { padding: 0.8rem 0; font-size: 0.85rem; }
+details .table-wrap { margin: 1rem 0; }
+.summary-pills { padding: 1rem 0; font-size: 0.84rem; color: var(--text-secondary); }
 .pill {
-    display: inline-block;
-    background: var(--bg);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255,255,255,0.04);
     border: 1px solid var(--border);
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    margin: 2px;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    margin: 3px;
+    color: var(--text-secondary);
 }
-.hashtags-tiered { display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: baseline; }
-.hashtag-tier { display: inline-flex; align-items: baseline; gap: 3px; margin-right: 0.5rem; }
+
+/* ---- HASHTAG TIERS ---- */
+.hashtags-tiered { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.hashtag-tier { display: inline-flex; align-items: center; gap: 4px; margin-right: 0.5rem; }
 .tier-label {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 700;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
 }
+
+/* ---- PLATFORM TIPS ---- */
 .platform-tips {
     list-style: none;
-    padding: 0.4rem 0 0 0;
-    margin: 0.3rem 0 0 0;
+    padding: 0.5rem 0 0 0;
+    margin: 0.4rem 0 0 0;
     border-top: 1px dashed var(--border);
     font-size: 0.78rem;
     color: var(--text-muted);
 }
-.platform-tips li { margin-bottom: 0.2rem; }
+.platform-tips li { margin-bottom: 0.25rem; }
 .platform-tips li strong { color: var(--accent); font-weight: 600; }
+
+/* ---- MISC ---- */
 .muted { color: var(--text-muted); font-size: 0.82rem; padding: 0.5rem 0 1rem; }
-.empty-state { text-align: center; padding: 3rem; }
+.empty-state { text-align: center; padding: 4rem 2rem; }
+.empty-state h2::before { display: none; }
 .empty-state pre {
-    background: var(--surface);
+    background: var(--surface-solid);
     border: 1px solid var(--border);
-    padding: 1rem;
-    border-radius: var(--radius);
+    padding: 1.2rem;
+    border-radius: var(--radius-sm);
     text-align: left;
     display: inline-block;
     margin-top: 1rem;
-    font-size: 0.85rem;
+    font-size: 0.84rem;
+    color: var(--text-secondary);
 }
+
+/* ---- FOOTER ---- */
 footer {
     text-align: center;
     color: var(--text-muted);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     margin-top: 3rem;
-    padding-top: 1.5rem;
+    padding: 2rem 1rem;
     border-top: 1px solid var(--border);
+    background: var(--surface);
 }
+footer span {
+    background: linear-gradient(135deg, var(--accent), var(--pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+}
+
+/* ---- RESPONSIVE ---- */
 @media (max-width: 700px) {
-    body { padding: 1rem 0.5rem; }
-    .card-header { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
-    th, td { padding: 0.4rem 0.5rem; font-size: 0.8rem; }
+    header { padding: 2.5rem 1rem 2rem; }
+    header h1 { font-size: 1.7rem; }
+    .page-wrapper { padding: 0 1rem 2rem; }
+    .calendar-grid { grid-template-columns: 1fr; }
+    .card-header { flex-direction: column; align-items: flex-start; gap: 0.4rem; padding: 0.8rem 1rem; }
+    .card-body { padding: 1rem; }
+    th, td { padding: 0.4rem 0.5rem; font-size: 0.78rem; }
+}
+@media (max-width: 480px) {
+    header h1 { font-size: 1.4rem; }
+    .cal-card { padding: 1rem; }
 }
 """
 
@@ -689,10 +943,12 @@ def build_html(trends: dict | None, filtered: dict | None, content_plan: dict | 
 </head>
 <body>
     {header}
+    <div class="page-wrapper">
     {"".join(body_parts)}
     {pipeline_section}
+    </div>
     <footer>
-        Generated by Social Media Strategist Agent &middot; {now}
+        Generated by <span>Social Media Strategist Agent</span> &middot; {now}
     </footer>
 </body>
 </html>"""
