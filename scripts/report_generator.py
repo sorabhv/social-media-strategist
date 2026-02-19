@@ -2,10 +2,10 @@
 Report Generator — Step 4 of the Social Media Strategist pipeline.
 
 Reads pipeline JSON outputs and renders a self-contained HTML report.
-Optionally pushes the report to GitHub via the REST API.
+ALWAYS pushes the report to GitHub via the REST API.
 
 Usage:
-    python report_generator.py [--output-dir output/] [--push]
+    python report_generator.py [--output-dir output/]
 """
 
 import argparse
@@ -654,10 +654,13 @@ def build_html(trends: dict | None, filtered: dict | None, content_plan: dict | 
 # ---------------------------------------------------------------------------
 
 def push_to_github(html_content: str, date_str: str):
+    """Push report to GitHub. Returns the public HTML URL or raises an error."""
     token = os.environ.get("GITHUB_TOKEN")
     if not token:
-        print("Error: GITHUB_TOKEN env var not set. Skipping push.")
-        return False
+        raise ValueError(
+            "GITHUB_TOKEN environment variable is required but not set. "
+            "Please set it before running the report generator."
+        )
 
     file_path = f"reports/{date_str}/report.html"
     url = f"{GITHUB_API}/repos/{GITHUB_REPO}/contents/{file_path}"
@@ -685,11 +688,10 @@ def push_to_github(html_content: str, date_str: str):
     resp = requests.put(url, headers=headers, json=payload, timeout=30)
     if resp.status_code in (200, 201):
         html_url = resp.json().get("content", {}).get("html_url", "")
-        print(f"  Pushed to GitHub: {html_url}")
-        return True
+        print(f"  ✅ Pushed to GitHub: {html_url}")
+        return html_url
     else:
-        print(f"  GitHub push failed ({resp.status_code}): {resp.text[:200]}")
-        return False
+        raise Exception(f"GitHub push failed ({resp.status_code}): {resp.text[:200]}")
 
 
 # ---------------------------------------------------------------------------
@@ -697,9 +699,8 @@ def push_to_github(html_content: str, date_str: str):
 # ---------------------------------------------------------------------------
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate HTML report from pipeline output")
+    parser = argparse.ArgumentParser(description="Generate HTML report from pipeline output and push to GitHub")
     parser.add_argument("--output-dir", default=None, help="Directory containing pipeline JSON files")
-    parser.add_argument("--push", action="store_true", help="Push report to GitHub")
     args = parser.parse_args()
 
     output_dir = Path(args.output_dir) if args.output_dir else DEFAULT_OUTPUT_DIR
@@ -734,11 +735,16 @@ def main():
     print(f"\nReport written to: {report_path}")
     print(f"  Size: {len(html):,} bytes")
 
-    if args.push:
-        print("\nPushing to GitHub...")
-        push_to_github(html, date_str)
-
-    return str(report_path)
+    print("\nPushing to GitHub (mandatory)...")
+    try:
+        github_url = push_to_github(html, date_str)
+        print(f"\n🎉 SUCCESS! View your report at:\n   {github_url}")
+        return github_url
+    except Exception as e:
+        print(f"\n❌ ERROR: {e}")
+        print("\nThe report was saved locally but could not be pushed to GitHub.")
+        print(f"Local path: {report_path}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
