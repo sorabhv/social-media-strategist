@@ -155,6 +155,43 @@ IMPORTANT: The "platform_tips" field is required for every day. Include a specif
 - Instagram Stories: stickers (poll, quiz, question), DM engagement, multi-slide strategy"""
 
 
+def inject_sound_links(concepts: list[dict], trends: list[dict]) -> list[dict]:
+    """Match concept sounds back to trend data and inject real TikTok links."""
+    # Build lookup: trend_id -> url, and normalized name -> url
+    id_map = {}
+    name_map = {}
+    for t in trends:
+        if t.get("url"):
+            id_map[t.get("trend_id", "")] = t["url"]
+            name = t.get("name", "").strip().lower()
+            name_map[name] = t["url"]
+
+    for concept in concepts:
+        # First try matching by trend_id
+        tid = concept.get("trend_id", "")
+        if tid in id_map:
+            concept["sound_link"] = id_map[tid]
+            continue
+
+        # Fallback: match by sound name (before the " — Artist" part)
+        sound = concept.get("sound", "")
+        sound_base = sound.split("\u2014")[0].split("\u2013")[0].split(" - ")[0].strip().lower()
+
+        if sound_base in name_map:
+            concept["sound_link"] = name_map[sound_base]
+            continue
+
+        # Fuzzy fallback: partial match
+        for trend_name, link in name_map.items():
+            if trend_name in sound_base or sound_base in trend_name:
+                concept["sound_link"] = link
+                break
+        else:
+            concept["sound_link"] = None
+
+    return concepts
+
+
 def build_prompts(filtered_data: dict, niche_config: dict) -> list[tuple[str, str, str]]:
     """Build prompt pairs for each LLM pass. Returns [(label, system, user), ...]."""
     display_name = niche_config["display_name"]
@@ -247,9 +284,13 @@ def main():
     concepts = []
     if concepts_result:
         concepts = concepts_result.get("reel_concepts", [])
+        # Inject real sound links from trend data
+        all_trends = filtered_data.get("top_trends", [])
+        concepts = inject_sound_links(concepts, all_trends)
         print(f"\nGenerated {len(concepts)} Reel concepts:")
         for c in concepts:
-            print(f"  - {c['title']} ({c['difficulty']}, {c['estimated_time']})")
+            link_status = "\u2713 link" if c.get("sound_link") else "\u2717 no link"
+            print(f"  - {c['title']} ({c['difficulty']}, {c['estimated_time']}) [{link_status}]")
     else:
         print(f"\nPrompts saved to {prompts_dir}/prompt_concepts_*.txt")
 

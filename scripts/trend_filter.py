@@ -97,6 +97,8 @@ def build_prompt(trends_data: dict) -> tuple[str, str]:
             compact["description"] = t["description"]
         if t.get("trend_curve"):
             compact["trend_curve"] = t["trend_curve"]
+        if t.get("url"):
+            compact["url"] = t["url"]
         compact_trends.append(compact)
 
     user_prompt = USER_PROMPT_TEMPLATE.format(
@@ -168,6 +170,13 @@ def main():
     result = call_llm(system_prompt, user_prompt)
 
     if result:
+        # Enrich top_trends with URLs from original trend data
+        url_map = {t["id"]: t.get("url") for t in trends_data["trends"] if t.get("url")}
+        for t in result.get("top_trends", []):
+            tid = t.get("trend_id")
+            if tid and tid in url_map:
+                t["url"] = url_map[tid]
+
         output = {
             "business_type": trends_data["business_type"],
             "country": trends_data["country"],

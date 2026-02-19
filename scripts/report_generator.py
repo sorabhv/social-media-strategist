@@ -225,6 +225,7 @@ def render_reel_concepts(content_plan: dict) -> str:
         hp = c.get("hook_pattern", "")
         script = c.get("script", [])
         sound = c.get("sound", "—")
+        sound_link = c.get("sound_link")
         caption = c.get("caption", "")
         hashtags_raw = c.get("hashtags", [])
         cta = c.get("cta", "")
@@ -262,7 +263,7 @@ def render_reel_concepts(content_plan: dict) -> str:
                     <ol>{steps_html}</ol>
                 </div>
                 <div class="detail-row">
-                    <span class="label">Sound:</span> {escape(sound)}
+                    <span class="label">Sound:</span> {f'<a href="{escape(sound_link)}" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">{escape(sound)} &#127925;</a>' if sound_link else escape(sound)}
                 </div>
                 <div class="detail-row">
                     <span class="label">Caption:</span> {escape(caption)}
