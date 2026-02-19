@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Content Plan</title>
+    <style>
+:root {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --accent: #6366f1;
+    --accent-light: #eef2ff;
+    --radius: 10px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border);
+}
+header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+}
+.meta { color: var(--text-muted); font-size: 0.95rem; }
+.subtitle {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+    font-weight: 600;
+}
+section { margin-bottom: 2.5rem; }
+h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-light);
+}
+.table-wrap { overflow-x: auto; }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    background: var(--surface);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+th {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
+    text-align: left;
+    padding: 0.65rem 0.75rem;
+    white-space: nowrap;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+td {
+    padding: 0.6rem 0.75rem;
+    border-top: 1px solid var(--border);
+    vertical-align: top;
+}
+tr:hover td { background: #fafaff; }
+.day-cell { white-space: nowrap; min-width: 80px; }
+.notes-cell { color: var(--text-muted); font-size: 0.82rem; max-width: 250px; }
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+.concepts-grid { display: flex; flex-direction: column; gap: 1.2rem; }
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.2rem;
+    background: var(--accent-light);
+    border-bottom: 1px solid var(--border);
+}
+.card-header h3 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin: 0;
+}
+.card-badges { display: flex; align-items: center; gap: 0.5rem; }
+.time-est { font-size: 0.8rem; color: var(--text-muted); }
+.card-body { padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.hook {
+    background: #fffbeb;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    border-left: 3px solid #f59e0b;
+    font-size: 0.9rem;
+}
+.script ol { padding-left: 1.5rem; margin-top: 0.3rem; }
+.script li { margin-bottom: 0.2rem; font-size: 0.88rem; }
+.detail-row { font-size: 0.88rem; }
+.label { font-weight: 600; color: var(--text-muted); }
+.hashtag {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin: 1px 2px;
+}
+details {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 1.2rem;
+}
+details summary {
+    padding: 0.8rem 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--accent);
+    font-size: 0.95rem;
+}
+details summary:hover { background: var(--accent-light); }
+details[open] summary { border-bottom: 1px solid var(--border); }
+details > :not(summary) { padding: 0 1.2rem; }
+details table { box-shadow: none; }
+details .table-wrap { margin: 0.8rem 0; }
+.summary-pills { padding: 0.8rem 0; font-size: 0.85rem; }
+.pill {
+    display: inline-block;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    margin: 2px;
+}
+.hashtags-tiered { display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: baseline; }
+.hashtag-tier { display: inline-flex; align-items: baseline; gap: 3px; margin-right: 0.5rem; }
+.tier-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.platform-tips {
+    list-style: none;
+    padding: 0.4rem 0 0 0;
+    margin: 0.3rem 0 0 0;
+    border-top: 1px dashed var(--border);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+.platform-tips li { margin-bottom: 0.2rem; }
+.platform-tips li strong { color: var(--accent); font-weight: 600; }
+.muted { color: var(--text-muted); font-size: 0.82rem; padding: 0.5rem 0 1rem; }
+.empty-state { text-align: center; padding: 3rem; }
+.empty-state pre {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1rem;
+    border-radius: var(--radius);
+    text-align: left;
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+}
+footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+@media (max-width: 700px) {
+    body { padding: 1rem 0.5rem; }
+    .card-header { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+    th, td { padding: 0.4rem 0.5rem; font-size: 0.8rem; }
+}
+</style>
+</head>
+<body>
+    
+    <header>
+        <h1>Social Media Content Plan</h1>
+        <p class="meta">Music School &middot; US &middot; February 19, 2026 <span class="subtitle">50 trends scanned</span></p>
+    </header>
+    
+    <section>
+        <h2>Weekly Calendar</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th><th>Content</th><th>Time</th>
+                        <th>Platforms</th><th>Type</th><th>Notes / Platform Tips</th>
+                    </tr>
+                </thead>
+                <tbody>
+            <tr>
+                <td class="day-cell"><strong>Monday</strong></td>
+                <td>Peaceful Practice: The 10-Minute Flow</td>
+                <td>6:30 PM</td>
+                <td>TikTok, Instagram Reels, YouTube Shorts</td>
+                <td><span class="badge" style="color:#7c3aed;background:#ede9fe">trending</span></td>
+                <td class="notes-cell">Post after school/work when parents and students are home planning practice time<ul class="platform-tips"><li><strong>TikTok:</strong> Use the trending &#x27;Floating Dreams&#x27; sound prominently. Add text overlay in first 2 seconds: &#x27;The practice soundtrack you need&#x27;. Reply to first 10 comments to boost engagement.</li><li><strong>Instagram Reels:</strong> Create custom cover with text &#x27;Practice Vibes&#x27;. Use 5 hashtags including #pianotok #learnpiano. Save to &#x27;Practice Tips&#x27; highlight after 24 hours.</li><li><strong>YouTube Shorts:</strong> Title: &#x27;The Perfect Piano Practice Soundtrack (Lo-Fi Vibes) #pianotips&#x27;. End with &#x27;Subscribe for more practice tips!&#x27;. Vertical orientation, no black bars.</li></ul></td>
+            </tr>
+            <tr>
+                <td class="day-cell"><strong>Tuesday</strong></td>
+                <td>5 Piano Technique Secrets They Don&#x27;t Teach You</td>
+                <td>12:00 PM</td>
+                <td>TikTok, Instagram Reels</td>
+                <td><span class="badge" style="color:#065f46;background:#d1fae5">evergreen</span></td>
+                <td class="notes-cell">Lunch scroll time—educational content performs well when people have a moment to watch and save<ul class="platform-tips"><li><strong>TikTok:</strong> Fast-paced editing (2-3 sec per tip) keeps watch time high. Use text overlays for each numbered tip. Encourage duets: &#x27;Show me YOUR technique!&#x27;</li><li><strong>Instagram Reels:</strong> Save-worthy content—remind users to &#x27;save this for later!&#x27; in caption. Use carousel post in stories with same content for double exposure. Hashtags: #pianotips #pianotechnique</li></ul></td>
+            </tr>
+            <tr>
+                <td class="day-cell"><strong>Wednesday</strong></td>
+                <td>Charli XCX Piano Cover: Beginner vs Pro</td>
+                <td>7:00 PM</td>
+                <td>TikTok, Instagram Reels, YouTube Shorts</td>
+                <td><span class="badge" style="color:#7c3aed;background:#ede9fe">trending</span></td>
+                <td class="notes-cell">Prime evening time when Charli XCX fans and music learners are both scrolling<ul class="platform-tips"><li><strong>TikTok:</strong> Use the actual &#x27;Chains of Love&#x27; sound (crucial for discovery). Split-screen effect. Text: &#x27;Week 1 | Week 12&#x27;. Tag #charlixcx to reach her fanbase.</li><li><strong>Instagram Reels:</strong> Create compelling custom cover showing the transformation. Use music-related hashtags + #charlixcx. Post in stories with &#x27;Swipe up for full video&#x27; (if eligible).</li><li><strong>YouTube Shorts:</strong> SEO title: &#x27;Learning Charli XCX Chains of Love on Piano - 12 Week Progress&#x27;. End screen: &#x27;Want piano lessons? Link in bio&#x27;. Strong CTR potential.</li></ul></td>
+            </tr>
+            <tr>
+                <td class="day-cell"><strong>Thursday</strong></td>
+                <td>Things I Love About Teaching Piano</td>
+                <td>5:30 PM</td>
+                <td>Instagram Reels, TikTok</td>
+                <td><span class="badge" style="color:#065f46;background:#d1fae5">evergreen</span></td>
+                <td class="notes-cell">After-school time when parents are looking for activities—great for building connection and trust with potential students<ul class="platform-tips"><li><strong>TikTok:</strong> Wholesome content gets high shares. Use trending &#x27;I luv&#x27; sound. Encourage comments: &#x27;Teachers, what do YOU love?&#x27;. Expect high engagement from education community.</li><li><strong>Instagram Reels:</strong> Story-style content—use multiple clips showing real student moments. Pin top comment about enrollment/trial lessons. Cross-post to feed AND reels for maximum reach.</li></ul></td>
+            </tr>
+            <tr>
+                <td class="day-cell"><strong>Friday</strong></td>
+                <td>Piano Practice Fails (But We&#x27;re Learning!)</td>
+                <td>3:00 PM</td>
+                <td>TikTok, Instagram Reels</td>
+                <td><span class="badge" style="color:#7c3aed;background:#ede9fe">trending</span></td>
+                <td class="notes-cell">Friday afternoon fun—relatable, light content to end the week on a positive note<ul class="platform-tips"><li><strong>TikTok:</strong> Use &#x27;Atleast&#x27; sound for comedic timing. Humor = high shares on Fridays. Encourage stitches/duets of other people&#x27;s practice fails. Reply with encouraging comments.</li><li><strong>Instagram Reels:</strong> Relatable content gets high shares. Caption: &#x27;Tag someone learning an instrument&#x27;. Use lighthearted hashtags like #pianofails #musichumor. Good for building community.</li></ul></td>
+            </tr>
+            <tr>
+                <td class="day-cell"><strong>Saturday</strong></td>
+                <td>Behind the Scenes: Studio Tour + Poll</td>
+                <td>10:00 AM</td>
+                <td>Instagram Stories</td>
+                <td><span class="badge" style="color:#b45309;background:#fef3c7">engagement</span></td>
+                <td class="notes-cell">Weekend engagement—show personality, build connection, low production effort<ul class="platform-tips"><li><strong>Instagram Stories:</strong> 3-slide sequence: (1) Studio space tour, (2) Poll: &#x27;What song should I teach next?&#x27;, (3) Question sticker: &#x27;Ask me about piano lessons&#x27;. Respond to all DMs personally—converts to inquiries.</li></ul></td>
+            </tr>
+            <tr>
+                <td class="day-cell"><strong>Sunday</strong></td>
+                <td>Rest / Review / Plan</td>
+                <td>—</td>
+                <td>—</td>
+                <td><span class="badge" style="color:#6b7280;background:#f3f4f6">rest</span></td>
+                <td class="notes-cell">Review week&#x27;s analytics: which Reels got most saves/shares? Plan next week&#x27;s content. Check what&#x27;s trending for Monday.</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </section>
+    <section>
+        <h2>Reel Concepts</h2>
+        <div class="concepts-grid">
+        <div class="card">
+            <div class="card-header">
+                <h3>Reel #1: Peaceful Practice: The 10-Minute Flow</h3>
+                <div class="card-badges"><span class="badge" style="color:#a16207;background:#fef3c7">reveal</span> <span class="badge" style="color:#6b7280;background:#f3f4f6"></span> <span class="time-est"></span></div>
+            </div>
+            <div class="card-body">
+                <div class="hook">
+                    <strong>Hook (first 3s):</strong> POV: You finally found the perfect practice soundtrack 🎹✨ *student sits at piano with soft golden hour lighting*
+                </div>
+                <div class="script">
+                    <strong>Script:</strong>
+                    <ol><li>Show student starting with warm-up scales to lo-fi beat</li><li>Cut to close-up of hands playing arpeggios smoothly</li><li>Wide shot showing relaxed posture and focused expression</li><li>End with satisfied smile and text: &#x27;This is my calm&#x27;</li></ol>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Sound:</span> Floating Dreams (Lofi) — ProdbyRich
+                </div>
+                <div class="detail-row">
+                    <span class="label">Caption:</span> The secret to better practice? The right vibe 🎶 This lo-fi track keeps my students in flow state for hours. What&#x27;s your go-to practice music? 🎹✨ #pianotok #musicstudio
+                </div>
+                <div class="detail-row hashtags-tiered">
+                    <span class="label">Hashtags:</span> <span class="hashtag-tier"><span class="tier-label">Broad Reach:</span> <span class="hashtag">#pianotok</span> <span class="hashtag">#learnpiano</span></span> <span class="hashtag-tier"><span class="tier-label">Mid-Tier:</span> <span class="hashtag">#musiclesson</span> <span class="hashtag">#pianotutorial</span></span> 
+                </div>
+                <div class="detail-row">
+                    <span class="label">CTA:</span> 
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3>Reel #2: Charli XCX Piano Cover: Beginner vs Pro</h3>
+                <div class="card-badges"><span class="badge" style="color:#1e40af;background:#dbeafe">before/after</span> <span class="badge" style="color:#6b7280;background:#f3f4f6"></span> <span class="time-est"></span></div>
+            </div>
+            <div class="card-body">
+                <div class="hook">
+                    <strong>Hook (first 3s):</strong> Week 1 vs Week 12 playing &#x27;Chains of Love&#x27; 👀 *split screen showing same student*
+                </div>
+                <div class="script">
+                    <strong>Script:</strong>
+                    <ol><li>Left side: Beginner struggling with simple melody, hesitant</li><li>Right side: Same student 3 months later playing full arrangement confidently</li><li>Show hands side-by-side, dramatic improvement visible</li><li>End with student&#x27;s smile: &#x27;Practice works&#x27;</li></ol>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Sound:</span> Chains of Love — Charli xcx
+                </div>
+                <div class="detail-row">
+                    <span class="label">Caption:</span> From beginner to confident in 12 weeks 🎹🔥 This is what happens when you show up every day. Who else is learning this song? Drop a 🎹 below! #progress #pianoprogress
+                </div>
+                <div class="detail-row hashtags-tiered">
+                    <span class="label">Hashtags:</span> <span class="hashtag-tier"><span class="tier-label">Broad Reach:</span> <span class="hashtag">#charlixcx</span> <span class="hashtag">#chainsoflove</span></span> <span class="hashtag-tier"><span class="tier-label">Mid-Tier:</span> <span class="hashtag">#pianoprogress</span> <span class="hashtag">#musiclesson</span></span> 
+                </div>
+                <div class="detail-row">
+                    <span class="label">CTA:</span> 
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3>Reel #3: 5 Piano Technique Secrets They Don&#x27;t Teach You</h3>
+                <div class="card-badges"><span class="badge" style="color:#6d28d9;background:#f5f3ff">listicle</span> <span class="badge" style="color:#6b7280;background:#f3f4f6"></span> <span class="time-est"></span></div>
+            </div>
+            <div class="card-body">
+                <div class="hook">
+                    <strong>Hook (first 3s):</strong> My piano teacher never told me THIS 🤯 *fingers positioned dramatically on keys*
+                </div>
+                <div class="script">
+                    <strong>Script:</strong>
+                    <ol><li>#1: The thumb tuck—show close-up of proper thumb positioning</li><li>#2: Wrist float technique—demonstrate with exaggerated slow motion</li><li>#3: The &#x27;ghost note&#x27; practice—play passage showing lighter touch</li><li>#4: Fingertip power—zoom on fingertips curved properly</li><li>#5: The secret? Practice 10 min daily beats 1 hour weekly</li></ol>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Sound:</span> Angelpoise — Recitals
+                </div>
+                <div class="detail-row">
+                    <span class="label">Caption:</span> These 5 techniques changed everything for my students 🎹✨ Which one surprised you? Save this for later! #pianotips #pianotutorial
+                </div>
+                <div class="detail-row hashtags-tiered">
+                    <span class="label">Hashtags:</span> <span class="hashtag-tier"><span class="tier-label">Broad Reach:</span> <span class="hashtag">#pianotok</span> <span class="hashtag">#learnpiano</span></span> <span class="hashtag-tier"><span class="tier-label">Mid-Tier:</span> <span class="hashtag">#pianotips</span> <span class="hashtag">#pianotechnique</span></span> 
+                </div>
+                <div class="detail-row">
+                    <span class="label">CTA:</span> 
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3>Reel #4: Things I Love About Teaching Piano</h3>
+                <div class="card-badges"><span class="badge" style="color:#6d28d9;background:#f5f3ff">listicle</span> <span class="badge" style="color:#6b7280;background:#f3f4f6"></span> <span class="time-est"></span></div>
+            </div>
+            <div class="card-body">
+                <div class="hook">
+                    <strong>Hook (first 3s):</strong> POV: You ask a piano teacher what they love about their job 🎹❤️ *teacher sitting at bench with big smile*
+                </div>
+                <div class="script">
+                    <strong>Script:</strong>
+                    <ol><li>1. That &#x27;aha!&#x27; moment when a student finally gets it—show student&#x27;s face lighting up</li><li>2. Hearing students play pieces I love—student performing confidently</li><li>3. Watching shy kids become performers—before/after recital courage</li><li>4. The sound of 20 students all practicing different songs—chaotic but beautiful studio montage</li><li>5. Being part of their music journey for years—group photo with long-term students</li></ol>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Sound:</span> I luv - Remastered Version — ASN JAYBOOG
+                </div>
+                <div class="detail-row">
+                    <span class="label">Caption:</span> Teaching piano isn&#x27;t just a job, it&#x27;s watching magic happen every single day 🎹❤️ What do you love most about learning music? #musicteacher #pianoteacher
+                </div>
+                <div class="detail-row hashtags-tiered">
+                    <span class="label">Hashtags:</span> <span class="hashtag-tier"><span class="tier-label">Broad Reach:</span> <span class="hashtag">#musicteacher</span> <span class="hashtag">#pianotok</span></span> <span class="hashtag-tier"><span class="tier-label">Mid-Tier:</span> <span class="hashtag">#musiclesson</span> <span class="hashtag">#pianoteacher</span></span> 
+                </div>
+                <div class="detail-row">
+                    <span class="label">CTA:</span> 
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3>Reel #5: Piano Practice Fails (But We&#x27;re Learning!)</h3>
+                <div class="card-badges"><span class="badge" style="color:#b91c1c;background:#ffe4e6">challenge</span> <span class="badge" style="color:#6b7280;background:#f3f4f6"></span> <span class="time-est"></span></div>
+            </div>
+            <div class="card-body">
+                <div class="hook">
+                    <strong>Hook (first 3s):</strong> At least I can play... OOPS 😅 *confident start → funny mistake*
+                </div>
+                <div class="script">
+                    <strong>Script:</strong>
+                    <ol><li>Student confidently starts piece, misses note dramatically</li><li>Laughs it off, restarts from top</li><li>Nails it the second time with fist pump</li><li>Text overlay: &#x27;Every pro was once a beginner who kept going&#x27;</li></ol>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Sound:</span> Atleast — Ron Suno
+                </div>
+                <div class="detail-row">
+                    <span class="label">Caption:</span> Mistakes = learning! 🎹 At least we&#x27;re showing up every day. Who else has practice blooper stories? 😂 #relatable #pianofails
+                </div>
+                <div class="detail-row hashtags-tiered">
+                    <span class="label">Hashtags:</span> <span class="hashtag-tier"><span class="tier-label">Broad Reach:</span> <span class="hashtag">#pianotok</span> <span class="hashtag">#learnpiano</span></span> <span class="hashtag-tier"><span class="tier-label">Mid-Tier:</span> <span class="hashtag">#musiclesson</span> <span class="hashtag">#practicesession</span></span> 
+                </div>
+                <div class="detail-row">
+                    <span class="label">CTA:</span> 
+                </div>
+            </div>
+        </div></div>
+    </section>
+    
+    <section>
+        <h2>Full Pipeline Data</h2>
+        
+    <details>
+        <summary>Filtered Trends — Top 10 Scored Trends</summary>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th><th>Trend</th><th>Source</th><th>Type</th>
+                        <th>Overall</th><th>Rel</th><th>Viral</th><th>Diff</th><th>Time</th>
+                        <th>Suggested Angle</th>
+                    </tr>
+                </thead>
+                <tbody>
+            <tr>
+                <td>1</td>
+                <td>&#9835; Floating Dreams (Lofi)</td>
+                <td>tiktok</td>
+                <td>song</td>
+                <td><strong>9.3</strong></td>
+                <td>10</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td class="notes-cell">Film student playing this peaceful lo-fi track during practice session with soft lighting to showcase piano technique and calming music</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>&#9835; Chains of Love</td>
+                <td>tiktok</td>
+                <td>song</td>
+                <td><strong>9.0</strong></td>
+                <td>9</td>
+                <td>9</td>
+                <td>8</td>
+                <td>10</td>
+                <td class="notes-cell">Create a piano cover or arrangement of this trending Charli XCX song showing before/after student progress or tutorial breakdown</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>&#9835; Angelpoise</td>
+                <td>tiktok</td>
+                <td>song</td>
+                <td><strong>8.9</strong></td>
+                <td>9</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td class="notes-cell">Use as background music for student spotlight or practice routine video showing piano technique tips and finger exercises</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>&#9835; I luv - Remastered Version</td>
+                <td>tiktok</td>
+                <td>song</td>
+                <td><strong>8.9</strong></td>
+                <td>8</td>
+                <td>9</td>
+                <td>9</td>
+                <td>10</td>
+                <td class="notes-cell">Film quick &#x27;things I love about piano&#x27; series with this trending audio showing different aspects of music education and student wins</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>&#9835; Atleast</td>
+                <td>tiktok</td>
+                <td>song</td>
+                <td><strong>8.8</strong></td>
+                <td>7</td>
+                <td>9</td>
+                <td>10</td>
+                <td>10</td>
+                <td class="notes-cell">Use as background for &#x27;at least I can play piano&#x27; relatable content showing funny student moments or practice fails turned wins</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>&#9835; #stopmotion</td>
+                <td>tiktok</td>
+                <td>hashtag</td>
+                <td><strong>7.5</strong></td>
+                <td>8</td>
+                <td>7</td>
+                <td>7</td>
+                <td>8</td>
+                <td class="notes-cell">Create stop-motion video of piano keys being played, sheet music pages turning, or student progress from first lesson to recital performance</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>&#9835; #alexwarren</td>
+                <td>tiktok</td>
+                <td>hashtag</td>
+                <td><strong>7.8</strong></td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>8</td>
+                <td class="notes-cell">Piano cover or tutorial of Alex Warren&#x27;s music (he&#x27;s a musician/creator) to tap into his fanbase and show your teaching style</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>&#9835; Mardi Gras Bounce</td>
+                <td>tiktok</td>
+                <td>song</td>
+                <td><strong>8.2</strong></td>
+                <td>6</td>
+                <td>8</td>
+                <td>10</td>
+                <td>10</td>
+                <td class="notes-cell">Use this upbeat trending sound for fun student performance video, jazz piano tutorial, or &#x27;guess this song&#x27; challenge with students</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>&#128270; hilary knight</td>
+                <td>google_trends</td>
+                <td>search_trend</td>
+                <td><strong>6.3</strong></td>
+                <td>5</td>
+                <td>7</td>
+                <td>8</td>
+                <td>6</td>
+                <td class="notes-cell">Create inspirational content about dedication and practice using Olympic athlete story as parallel to music student journey and discipline</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>&#9835; #home</td>
+                <td>tiktok</td>
+                <td>hashtag</td>
+                <td><strong>7.8</strong></td>
+                <td>7</td>
+                <td>9</td>
+                <td>10</td>
+                <td>5</td>
+                <td class="notes-cell">Film cozy home practice sessions, studio tour, or &#x27;making music at home&#x27; content showing the comfort and accessibility of piano lessons</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </details>
+    <details>
+        <summary>Trend Discovery — 50 Signals Collected</summary>
+        <div class="summary-pills">
+            <strong>By source:</strong> <span class="pill">&#9835; tiktok: 40</span> <span class="pill">&#128270; google_trends: 10</span>
+            &nbsp;&nbsp;<strong>By type:</strong> <span class="pill">hashtag: 20</span> <span class="pill">song: 10</span> <span class="pill">video: 10</span> <span class="pill">search_trend: 10</span>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Source</th><th>Name</th><th>Type</th>
+                        <th>Views/Score</th><th>Rank Chg</th><th>Trajectory</th><th>7d Curve</th>
+                    </tr>
+                </thead>
+                <tbody>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#shabebarat</td>
+                <td>hashtag</td>
+                <td>9.7M</td>
+                <td>+51</td>
+                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,12.0 26.7,2.0 40.0,14.5 53.3,12.6 66.7,9.5 80.0,10.8" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#home</td>
+                <td>hashtag</td>
+                <td>963.3M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,9.3 13.3,3.8 26.7,2.0 40.0,22.0 53.3,20.2 66.7,21.1 80.0,21.1" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#makefriendslive</td>
+                <td>hashtag</td>
+                <td>243.3M</td>
+                <td>+3</td>
+                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,6.3 26.7,9.1 40.0,14.9 53.3,17.7 66.7,19.1 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#livewithlowfollowers</td>
+                <td>hashtag</td>
+                <td>121.8M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,13.4 13.3,4.9 26.7,2.0 40.0,13.4 53.3,10.6 66.7,22.0 80.0,16.3" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#epstein</td>
+                <td>hashtag</td>
+                <td>3.1B</td>
+                <td>+2</td>
+                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,4.1 26.7,7.7 40.0,14.9 53.3,16.3 66.7,19.9 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#teamworkmakesthedreamwork</td>
+                <td>hashtag</td>
+                <td>44.1M</td>
+                <td>+47</td>
+                <td><span class="badge" style="color:#7c2d12;background:#ffe4e6">SPIKE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,8.7 13.3,4.1 26.7,2.0 40.0,20.6 53.3,21.5 66.7,21.8 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#epsteinfiles</td>
+                <td>hashtag</td>
+                <td>1.5B</td>
+                <td>+10</td>
+                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,5.2 26.7,9.4 40.0,15.2 53.3,16.7 66.7,18.3 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#epsteinisland</td>
+                <td>hashtag</td>
+                <td>1.0B</td>
+                <td>+15</td>
+                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,5.6 26.7,8.7 40.0,13.5 53.3,14.1 66.7,17.2 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#magallanes</td>
+                <td>hashtag</td>
+                <td>34.1M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,20.0 13.3,21.2 26.7,19.5 40.0,2.0 53.3,16.4 66.7,20.7 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#copadelrey</td>
+                <td>hashtag</td>
+                <td>491.5M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,17.0 13.3,2.0 26.7,2.0 40.0,15.9 53.3,18.8 66.7,20.2 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#jeffreyepstein</td>
+                <td>hashtag</td>
+                <td>880.1M</td>
+                <td>+20</td>
+                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,4.9 26.7,9.6 40.0,14.9 53.3,19.1 66.7,20.2 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#albacete</td>
+                <td>hashtag</td>
+                <td>9.5M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,9.6 13.3,2.0 26.7,14.4 40.0,22.0 53.3,15.8 66.7,17.9 80.0,17.9" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#zibai</td>
+                <td>hashtag</td>
+                <td>29.8M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,11.4 13.3,19.6 26.7,22.0 40.0,20.8 53.3,19.6 66.7,2.0 80.0,7.9" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#chelsea</td>
+                <td>hashtag</td>
+                <td>467.2M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,19.4 26.7,7.2 40.0,9.1 53.3,22.0 66.7,22.0 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#alexwarren</td>
+                <td>hashtag</td>
+                <td>96.0M</td>
+                <td>+34</td>
+                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,10.5 26.7,11.2 40.0,12.8 53.3,19.7 66.7,22.0 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#stopmotion</td>
+                <td>hashtag</td>
+                <td>186.1M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,5.6 13.3,2.0 26.7,6.5 40.0,2.0 53.3,12.9 66.7,16.5 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#14февраля</td>
+                <td>hashtag</td>
+                <td>790.2M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,18.7 13.3,17.6 26.7,12.7 40.0,2.0 53.3,16.4 66.7,20.4 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#files</td>
+                <td>hashtag</td>
+                <td>268.1M</td>
+                <td>+40</td>
+                <td><span class="badge" style="color:#92400e;background:#fef3c7">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,6.0 26.7,8.7 40.0,18.0 53.3,18.0 66.7,19.3 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#stormgoretti</td>
+                <td>hashtag</td>
+                <td>364.6M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,2.0 13.3,9.1 26.7,12.6 40.0,13.8 53.3,14.9 66.7,20.8 80.0,22.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#cmpunk</td>
+                <td>hashtag</td>
+                <td>52.7M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#1e40af;background:#dbeafe">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,11.0 13.3,19.2 26.7,19.9 40.0,22.0 53.3,22.0 66.7,20.6 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>Mardi Gras Bounce</td>
+                <td>song</td>
+                <td>—</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,21.1 13.3,22.0 26.7,20.7 40.0,16.8 53.3,13.0 66.7,13.6 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>Atleast</td>
+                <td>song</td>
+                <td>—</td>
+                <td>+1</td>
+                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,21.8 13.3,22.0 26.7,21.4 40.0,20.3 53.3,16.3 66.7,3.7 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>Happy Chinese New Year 2026 ( Horse Year )</td>
+                <td>song</td>
+                <td>—</td>
+                <td>+58</td>
+                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,22.0 26.7,21.8 40.0,21.8 53.3,21.6 66.7,19.4 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>La Mamá de los Pollitos</td>
+                <td>song</td>
+                <td>—</td>
+                <td>+24</td>
+                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,22.0 26.7,21.8 40.0,21.8 53.3,21.6 66.7,16.2 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>I luv - Remastered Version</td>
+                <td>song</td>
+                <td>—</td>
+                <td>+1</td>
+                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,18.4 26.7,2.0 40.0,2.7 53.3,4.1 66.7,3.1 80.0,2.7" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>Ambatukam Termuwani</td>
+                <td>song</td>
+                <td>—</td>
+                <td>+8</td>
+                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,21.8 26.7,19.4 40.0,16.3 53.3,10.9 66.7,8.4 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>FUCK LIKE YOU DANCE</td>
+                <td>song</td>
+                <td>—</td>
+                <td>+8</td>
+                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,22.0 26.7,15.7 40.0,14.0 53.3,12.5 66.7,8.8 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>Floating Dreams (Lofi)</td>
+                <td>song</td>
+                <td>—</td>
+                <td>+8</td>
+                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,21.5 26.7,17.0 40.0,13.2 53.3,13.7 66.7,9.9 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>Chains of Love</td>
+                <td>song</td>
+                <td>—</td>
+                <td>+2</td>
+                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,21.8 26.7,18.5 40.0,12.8 53.3,6.1 66.7,2.8 80.0,2.0" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>Angelpoise</td>
+                <td>song</td>
+                <td>—</td>
+                <td>NEW</td>
+                <td><span class="badge" style="color:#065f46;background:#d1fae5">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><polyline points="0.0,22.0 13.3,22.0 26.7,19.4 40.0,14.7 53.3,11.2 66.7,2.0 80.0,4.2" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr></tbody>
+            </table>
+        </div>
+        <p class="muted">Showing top 30 of 50 trends.</p>
+    </details>
+    </section>
+    <footer>
+        Generated by Social Media Strategist Agent &middot; 2026-02-19 19:09 UTC
+    </footer>
+</body>
+</html>
