@@ -1,6 +1,6 @@
 # Social Media Strategist Agent
 
-An AI agent skill for [NeoClaw](https://docs.openclaw.ai) that helps small businesses discover trending content across TikTok, Google Trends, and Reddit, then generates a personalized weekly content plan with ready-to-film Reel concepts, captions, and hashtags.
+An AI agent skill for [NeoClaw](https://docs.openclaw.ai) that helps small businesses discover trending content across TikTok and Google Trends, then generates a personalized weekly content plan with ready-to-film Reel concepts, captions, and hashtags.
 
 Built for the **Gen NeoClaw Hackathon** (Feb 2026).
 
@@ -11,10 +11,10 @@ trend_scraper.py          trend_filter.py          content_planner.py       repo
      |                         |                         |                        |
 TikTok Creative Center    LLM scores each trend    Generates 5 Reel         Renders HTML report
 Google Trends RSS         on relevance, virality,  concepts + 7-day         and pushes to GitHub
-Reddit JSON API           difficulty, timeliness    posting calendar
-     |                         |                         |                        |
-     v                         v                         v                        v
- trends.json           filtered_trends.json       content_plan.json       reports/{date}/report.html
+     |                    difficulty, timeliness    posting calendar
+     v                         |                         |                        |
+ trends.json                   v                         v                        v
+                        filtered_trends.json       content_plan.json       reports/{date}/report.html
 ```
 
 ## Quick Start
@@ -96,7 +96,6 @@ python3 scripts/report_generator.py --push   # pushes to GitHub
 |--------|--------|---------------|
 | TikTok Creative Center | SSR HTML parsing + Node.js API bridge | No |
 | Google Trends | RSS feed + `pytrends` library | No |
-| Reddit | JSON API (append `.json` to URLs) | No |
 
 ## Project Structure
 
@@ -114,7 +113,6 @@ social-media-strategist/
     tiktok_api.mjs             # Node.js TikTok API bridge
     test_tiktok.py             # P0 validation script
     test_pytrends.py           # P0 validation script
-    test_reddit.py             # P0 validation script
   references/
     niche_mapping.json         # 24 business types with config
     posting_schedule.md        # Optimal posting times

@@ -23,14 +23,13 @@ SYSTEM_PROMPT = """You are an expert social media strategist who helps small bus
 
 You will receive:
 1. A business type and its niche context (hashtag seeds, content themes)
-2. A list of trending signals from TikTok, Google Trends, and Reddit
+2. A list of trending signals from TikTok and Google Trends
 
 Your job: Score each trend's usefulness for THIS SPECIFIC business and return the top 10.
 
 IMPORTANT RULES:
 - A trend is relevant even if it's not directly about the business — the question is "can this business create content using this trend?"
 - Trending sounds/songs are VERY valuable because any business can use them as background music
-- Reddit posts that show what customers care about are valuable for content angles
 - Google trending topics are only relevant if the business can tie them to their content naturally
 - Ignore promoted/ad content from TikTok
 - Prefer RISING and STABLE trends over DECLINING and SPIKE trends"""
@@ -60,8 +59,8 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
     {{
       "trend_id": "the id field from the trend",
       "name": "trend name",
-      "source": "tiktok/google_trends/reddit",
-      "type": "hashtag/song/video/search_trend/related_query/reddit_post",
+      "source": "tiktok/google_trends",
+      "type": "hashtag/song/video/search_trend/related_query",
       "scores": {{
         "relevance": 8,
         "virality": 9,

@@ -1,7 +1,7 @@
 """
 Unified Trend Scraper — Step 1 of the Social Media Strategist pipeline.
 
-Pulls trending data from TikTok, Google Trends, and Reddit, normalizes
+Pulls trending data from TikTok and Google Trends, normalizes
 everything into TrendSignal objects, and writes trends.json.
 
 Usage:
@@ -38,7 +38,6 @@ BROWSER_UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
 )
-REDDIT_UA = "SocialStrategistAgent/1.0"
 GOOGLE_TRENDS_RSS = "https://trends.google.com/trending/rss"
 RSS_NS = {"ht": "https://trends.google.com/trending/rss"}
 
@@ -326,55 +325,6 @@ def fetch_google_trends(country: str, keywords: list[str]) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-# Reddit
-# ---------------------------------------------------------------------------
-
-def fetch_reddit(subreddits: list[str]) -> list[dict]:
-    """Fetch hot and rising posts from niche-specific subreddits."""
-    signals = []
-    headers = {"User-Agent": REDDIT_UA}
-
-    for sub in subreddits:
-        for listing in ["hot", "rising"]:
-            print(f"  [Reddit] r/{sub}/{listing}...")
-            try:
-                url = f"https://www.reddit.com/r/{sub}/{listing}.json"
-                resp = requests.get(url, headers=headers, params={"limit": 10, "t": "week"}, timeout=15)
-                if resp.status_code != 200:
-                    print(f"    HTTP {resp.status_code}")
-                    continue
-                posts = resp.json().get("data", {}).get("children", [])
-                for p in posts:
-                    d = p["data"]
-                    title = d.get("title", "")
-                    score = d.get("score", 0)
-                    if score < 2 and listing == "hot":
-                        continue
-                    signals.append({
-                        "id": f"reddit_{slugify(sub)}_{slugify(title[:40])}",
-                        "source": "reddit",
-                        "type": "reddit_post",
-                        "name": title[:120],
-                        "description": f"r/{sub} ({listing})",
-                        "metrics": {
-                            "score": score,
-                            "comments": d.get("num_comments", 0),
-                            "upvote_ratio": d.get("upvote_ratio", 0),
-                        },
-                        "trajectory": "UNKNOWN",
-                        "trend_curve": [],
-                        "url": f"https://reddit.com{d.get('permalink', '')}",
-                        "related": [],
-                    })
-                print(f"    {len(posts)} posts")
-            except Exception as e:
-                print(f"    Failed: {e}")
-            time.sleep(1)
-
-    return signals
-
-
-# ---------------------------------------------------------------------------
 # Deduplication
 # ---------------------------------------------------------------------------
 
@@ -404,9 +354,6 @@ def run(business_type: str, country: str = "US") -> dict:
 
     print("\n--- Google Trends ---")
     all_signals.extend(fetch_google_trends(country, niche.get("google_trends_keywords", [])))
-
-    print("\n--- Reddit ---")
-    all_signals.extend(fetch_reddit(niche.get("subreddits", [])))
 
     all_signals = deduplicate(all_signals)
 
