@@ -4,6 +4,10 @@ An AI agent skill for [NeoClaw](https://docs.openclaw.ai) that helps small busin
 
 Built for the **Gen NeoClaw Hackathon** (Feb 2026).
 
+## Problem Statement
+
+Small businesses, Gig Economy workers, and Entrepreneurs face a critical challenge today: **marketing and expanding their business** to reach new markets and audiences — a necessity to grow their footprint and stay competitive. Social media has become the dominant marketing tool of the 21st century, yet leveraging it effectively remains out of reach for most due to the **effort** required to produce consistent content, the **cost** of hiring specialists or running paid campaigns, the complexity of **understanding ever-changing platform algorithms**, and the difficulty of keeping up with **trending features** that drive visibility. This agent solves that gap by automating trend discovery, content planning, and strategy — turning social media from an overwhelming burden into an actionable, accessible growth engine.
+
 ## Pipeline
 
 ```
