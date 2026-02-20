@@ -118,9 +118,15 @@ social-media-strategist/
   references/
     niche_mapping.json         # 24 business types with config
     posting_schedule.md        # Optimal posting times
+  memory/
+    business_profile.json      # Saved business profile for returning users
   output/                      # Generated pipeline outputs
 ```
 
 ## How It Works on NeoClaw
 
 This project is packaged as an OpenClaw Skill. The `SKILL.md` file tells the NeoClaw agent how to run the pipeline, present results in chat, and interact with the user. The agent handles orchestration -- you just ask it "What should I post this week?" and it runs the full pipeline.
+
+### Business Profile Memory
+
+The skill remembers your business details across sessions. On first use, it asks for your business type, country, and optional details (business name, target audience, brand voice, etc.). On subsequent runs, it loads your saved profile and confirms before proceeding -- no need to re-enter information. If you share preferences during a session (e.g. "our audience is women 25-40"), the agent automatically saves them for future use.

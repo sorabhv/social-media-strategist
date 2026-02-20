@@ -1,5 +1,20 @@
 # Social Media Strategist - Update Summary
 
+## v1.1.0 - Business Profile Memory
+
+### Added
+- **Memory system** for returning users: the skill now reads `memory/business_profile.json` before starting and confirms with the user if it's the same business
+- Saves business profile fields: name, type, country, location, target audience, brand voice, content preferences, posting frequency, platforms, and additional notes
+- **Smart memory updates**: if the user shares relevant preferences mid-conversation (e.g. "we don't do dancing reels"), the agent saves them for future sessions
+- Clear rules for what to save (durable business info) vs. what not to save (transient requests)
+- Updated SKILL.md description to mention memory capability
+- Added `memory/business_profile.json` template with null defaults
+- Updated README with memory documentation
+
+---
+
+## v1.0.0 - Initial Release
+
 ## Changes Made
 
 ### 1. **Mandatory GitHub Push**
