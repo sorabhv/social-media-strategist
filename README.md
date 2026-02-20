@@ -136,6 +136,52 @@ social-media-strategist/
 
 This project is packaged as an OpenClaw Skill. The `SKILL.md` file tells the NeoClaw agent how to run the pipeline, present results in chat, and interact with the user. The agent handles orchestration -- you just ask it "What should I post this week?" and it runs the full pipeline.
 
+### Sample Prompts
+
+Here are example prompts you can try to explore different capabilities of the skill:
+
+#### Full Workflow (Complete Run)
+- "I need a weekly content plan for my bakery in the US"
+- "Generate social media content ideas for my coffee shop"
+- "Help me plan Instagram Reels for my fitness gym in Canada"
+- "Generate social media content ideas for my Piano Music Studio in California"
+
+→ Walks through all 4 steps: trend discovery → filtering → content planning → HTML report
+
+#### Business Type Inference
+- "I run a dog grooming business and need content ideas"
+- "My tattoo shop needs help with social media"
+- "I'm a personal trainer looking for Reel ideas"
+
+→ Tests if the skill correctly maps natural language to the 24 business types
+
+#### Country Variations
+- "Content plan for my restaurant in UK"
+- "Bakery trends in Australia (AU)"
+- "Coffee shop content for Germany (DE)"
+
+→ Tests country code handling and localized trend data
+
+#### Step-by-Step Control
+- "Just show me trending topics for nail salons first"
+- "Run trend discovery for my bookstore, then stop"
+- "I want to see the filtered trends before generating content"
+
+→ Pause between steps and get user approval before continuing
+
+#### Edge Cases
+- "I have a crypto consulting business" (not in the 24 types)
+- "Generate content for my bakery" (no country specified)
+- "Show me trends for XYZ" (invalid business type)
+
+→ Tests error handling and fallback behavior
+
+#### Output Format Preferences
+- "Give me just the posting calendar"
+- "Show me the Reel concepts in detail"
+- "Can I see the raw trend data?"
+- "Just give me the report link"
+
 ### Business Profile Memory
 
 The skill remembers your business details across sessions so returning users never have to re-enter information.
