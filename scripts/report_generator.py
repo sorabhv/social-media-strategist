@@ -25,6 +25,36 @@ DEFAULT_OUTPUT_DIR = PROJECT_DIR / "output"
 GITHUB_REPO = "sorabhv/social-media-strategist"
 GITHUB_API = "https://api.github.com"
 
+# Default posting times by day (from references/posting_schedule.md)
+DEFAULT_POSTING_TIMES = {
+    "Monday": "9:00 AM",
+    "Tuesday": "10:00 AM",
+    "Wednesday": "12:00 PM",
+    "Thursday": "2:00 PM",
+    "Friday": "10:00 AM",
+    "Saturday": "10:00 AM",
+    "Sunday": None,
+}
+
+
+def get_trending_songs(trends: dict | None) -> list[dict]:
+    """Extract songs with TikTok URLs from trends.json, sorted by trajectory."""
+    if not trends:
+        return []
+    songs = []
+    for t in trends.get("trends", []):
+        if t.get("type") == "song" and t.get("url"):
+            songs.append({
+                "name": t.get("name", "Unknown"),
+                "url": t["url"],
+                "trajectory": t.get("trajectory", "UNKNOWN"),
+                "rank_change": t.get("rank_change", 0),
+            })
+    # Prioritize RISING songs, then by rank_change
+    order = {"RISING": 0, "SPIKE": 1, "STABLE": 2, "DECLINING": 3, "FLAT": 4, "UNKNOWN": 5}
+    songs.sort(key=lambda s: (order.get(s["trajectory"], 5), -(s.get("rank_change") or 0)))
+    return songs
+
 
 # ---------------------------------------------------------------------------
 # Data loading
@@ -224,7 +254,7 @@ def render_header(trends: dict | None, content_plan: dict | None) -> str:
     </header>"""
 
 
-def render_calendar(content_plan: dict) -> str:
+def render_calendar(content_plan: dict, business_type: str = "") -> str:
     calendar = content_plan.get("weekly_calendar", [])
     if not calendar:
         return ""
@@ -232,7 +262,11 @@ def render_calendar(content_plan: dict) -> str:
     cards = ""
     for day in calendar:
         platforms = ", ".join(day.get("platforms", [])) or "—"
-        time_str = day.get("time") or "—"
+        time_str = day.get("time") or ""
+        # Fill in default posting time if missing
+        if not time_str or time_str == "—":
+            day_name = day.get("day", "")
+            time_str = DEFAULT_POSTING_TIMES.get(day_name, "—") or "—"
         ct = day.get("content_type", "")
         notes = day.get("notes", "")
         title = day.get("title", "—")
@@ -268,7 +302,7 @@ def render_calendar(content_plan: dict) -> str:
     </section>"""
 
 
-def render_reel_concepts(content_plan: dict) -> str:
+def render_reel_concepts(content_plan: dict, trending_songs: list[dict] | None = None) -> str:
     concepts = content_plan.get("reel_concepts", [])
     if not concepts:
         return ""
@@ -320,6 +354,7 @@ def render_reel_concepts(content_plan: dict) -> str:
                 <div class="detail-row">
                     <span class="label">Sound:</span> {f'<a href="{escape(sound_link)}" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)">{escape(sound)} &#127925;</a>' if sound_link else escape(sound)}
                 </div>
+                {_render_suggested_sounds(sound, sound_link, trending_songs)}
                 <div class="detail-row">
                     <span class="label">Caption:</span> {escape(caption)}
                 </div>
@@ -337,6 +372,37 @@ def render_reel_concepts(content_plan: dict) -> str:
         <h2>Reel Concepts</h2>
         <div class="concepts-grid">{cards}</div>
     </section>"""
+
+
+def _render_suggested_sounds(sound: str, sound_link, trending_songs: list[dict] | None) -> str:
+    """Render suggested trending sounds when the reel concept has no sound/link."""
+    # Don't show suggestions if a valid sound is already provided
+    if sound_link or (sound and sound not in ("—", "-", "–", "", "original audio")):
+        return ""
+    if not trending_songs:
+        return ""
+
+    # Show top 3 trending songs as suggestions
+    suggestions = trending_songs[:3]
+    if not suggestions:
+        return ""
+
+    links = []
+    for s in suggestions:
+        traj = trajectory_badge(s["trajectory"])
+        links.append(
+            f'<a href="{escape(s["url"])}" target="_blank" rel="noopener" '
+            f'style="color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent);">'
+            f'{escape(s["name"])} &#127925;</a> {traj}'
+        )
+    pills_html = " &nbsp;|&nbsp; ".join(links)
+
+    return (
+        f'<div class="detail-row" style="margin-top:0.25rem;">'
+        f'<span class="label" style="color:var(--text-muted)">Suggested sounds:</span> '
+        f'{pills_html}'
+        f'</div>'
+    )
 
 
 def render_filtered_trends(filtered: dict) -> str:
@@ -916,8 +982,10 @@ def build_html(trends: dict | None, filtered: dict | None, content_plan: dict | 
     if content_plan:
         # Inject sound URLs from trends.json into reel concepts
         content_plan = inject_sound_links(content_plan, trends)
-        body_parts.append(render_calendar(content_plan))
-        body_parts.append(render_reel_concepts(content_plan))
+        biz_type = content_plan.get("business_type", "")
+        trending_songs = get_trending_songs(trends)
+        body_parts.append(render_calendar(content_plan, business_type=biz_type))
+        body_parts.append(render_reel_concepts(content_plan, trending_songs=trending_songs))
 
     if not body_parts:
         body_parts.append(render_no_data())
