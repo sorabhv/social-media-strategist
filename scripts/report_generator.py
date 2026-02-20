@@ -1045,6 +1045,38 @@ def main():
     print(f"\nReport written to: {report_path}")
     print(f"  Size: {len(html):,} bytes")
 
+    # Save a local copy to OpenClaw memory for future reference
+    openclaw_memory_dir = (
+        Path.home()
+        / ".openclaw"
+        / "skills"
+        / "social-media-strategist"
+        / "memory"
+        / "reports"
+        / date_str
+    )
+    openclaw_memory_dir.mkdir(parents=True, exist_ok=True)
+    openclaw_report_path = openclaw_memory_dir / "report.html"
+    with open(openclaw_report_path, "w") as f:
+        f.write(html)
+    print(f"  Memory copy: {openclaw_report_path}")
+
+    # Also save a summary JSON for quick agent lookback
+    summary = {
+        "date": date_str,
+        "business_type": content_plan.get("business_type", "unknown") if content_plan else "unknown",
+        "country": content_plan.get("country", "US") if content_plan else "US",
+        "num_concepts": len(content_plan.get("reel_concepts", [])) if content_plan else 0,
+        "num_calendar_days": len(content_plan.get("weekly_calendar", [])) if content_plan else 0,
+        "num_trends": trends["summary"]["total"] if trends else 0,
+        "report_path": str(openclaw_report_path),
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+    }
+    summary_path = openclaw_memory_dir / "summary.json"
+    with open(summary_path, "w") as f:
+        json.dump(summary, f, indent=2)
+    print(f"  Memory summary: {summary_path}")
+
     print("\nPushing to GitHub (mandatory)...")
     try:
         github_url = push_to_github(html, date_str)

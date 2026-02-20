@@ -170,6 +170,23 @@ Format using markdown tables for the calendar, and structured blocks for Reel co
 - Do not generate content that is political, controversial, or could harm the business's reputation.
 - Trending sounds are recommendations only — the user selects the actual sound when posting on the platform.
 
+## Memory & Past Reports
+
+Past reports are automatically saved locally at `~/.openclaw/skills/social-media-strategist/memory/reports/{YYYY-MM-DD}/`. Each date folder contains:
+- `report.html` — the full HTML report
+- `summary.json` — a quick-reference JSON with business type, number of concepts, trends scanned, etc.
+
+Before generating a new plan, check `~/.openclaw/skills/social-media-strategist/memory/reports/` for recent reports to avoid repeating the same content ideas. You can read `summary.json` files to quickly understand what was recommended previously without parsing the full HTML.
+
+```shell
+ls ~/.openclaw/skills/social-media-strategist/memory/reports/
+```
+
+To read a past summary:
+```shell
+cat ~/.openclaw/skills/social-media-strategist/memory/reports/{YYYY-MM-DD}/summary.json
+```
+
 ## References
 
 - `references/niche_mapping.json` — business type configuration with hashtag seeds, keywords, and content themes
