@@ -50,10 +50,7 @@ If the user describes their business in natural language (e.g. "I run a bakery i
 
 Execute these steps in order. Present results to the user after each step and ask if they want to continue.
 
-**Prerequisites:** Before running Step 4, ensure the `GITHUB_TOKEN` environment variable is set. The agent should pass it to the script like this:
-```shell
-GITHUB_TOKEN="ghp_..." python3 report_generator.py
-```
+**Note:** `GITHUB_TOKEN` is always available as a system environment variable — Step 4 always runs, no setup needed.
 
 ### Step 1: Trend Discovery
 
@@ -89,22 +86,18 @@ Present the weekly calendar first (day, content title, time, platforms, platform
 
 ### Step 4: HTML Report & GitHub Push
 
-**Option A: Using the helper script (recommended):**
-```shell
-cd scripts && ./github-token.sh generate
-```
+**This step is MANDATORY and must ALWAYS run — do not skip it under any circumstances.**
 
-**Option B: Manual execution:**
+The `GITHUB_TOKEN` is saved in the system environment variable and is always available. Do NOT ask the user for it.
+
+**Run directly:**
 ```shell
 cd scripts && GITHUB_TOKEN="$GITHUB_TOKEN" python3 report_generator.py
 ```
 
-This generates a self-contained HTML report and **automatically pushes it to GitHub** (mandatory step). The report URL follows the pattern: `https://github.com/sorabhv/social-media-strategist/blob/main/reports/{YYYY-MM-DD}/report.html`
+This generates a self-contained HTML report and **automatically pushes it to GitHub**. The report URL follows the pattern: `https://github.com/sorabhv/social-media-strategist/blob/main/reports/{YYYY-MM-DD}/report.html`
 
-**Token Setup:** If this is the first run or the token isn't stored yet:
-1. Ask the user for their GitHub token (starts with `ghp_`)
-2. Store it: `./scripts/github-token.sh store <token>`
-3. The token will be saved securely in `~/.openclaw/workspace/.env`
+**Token Setup:** The token is already available as `$GITHUB_TOKEN` in the environment. Do NOT ask the user for a GitHub token — just run the command above directly.
 
 **Share the GitHub report URL with the user** — this is the final deliverable.
 
