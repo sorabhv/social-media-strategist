@@ -33,8 +33,8 @@ memory/business_profile.json ◄── updated with any new preferences from con
 
 - Python 3.10+
 - Node.js 18+ (for TikTok API bridge)
-- `OPENAI_API_KEY` env var (for LLM steps)
-- `GITHUB_TOKEN` env var (optional, for report push)
+- `OPENAI_API_KEY` env var (optional, for LLM steps. Not required for NeoClaw as default LLM is providedd)
+- `GITHUB_TOKEN` env var (optional, for output report push)
 
 ### Install Dependencies
 
