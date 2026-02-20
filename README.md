@@ -130,3 +130,7 @@ This project is packaged as an OpenClaw Skill. The `SKILL.md` file tells the Neo
 ### Business Profile Memory
 
 The skill remembers your business details across sessions. On first use, it asks for your business type, country, and optional details (business name, target audience, brand voice, etc.). On subsequent runs, it loads your saved profile and confirms before proceeding -- no need to re-enter information. If you share preferences during a session (e.g. "our audience is women 25-40"), the agent automatically saves them for future use.
+
+### OpenClaw Directory
+
+~/.openclaw/skills/social-media-strategist/

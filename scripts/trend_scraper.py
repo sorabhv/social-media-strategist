@@ -38,7 +38,7 @@ BROWSER_UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
 )
-REDDIT_UA = "SocialMediaStrategist/1.0 (hackathon project)"
+REDDIT_UA = "SocialStrategistAgent/1.0"
 GOOGLE_TRENDS_RSS = "https://trends.google.com/trending/rss"
 RSS_NS = {"ht": "https://trends.google.com/trending/rss"}
 
