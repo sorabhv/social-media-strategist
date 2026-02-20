@@ -7,6 +7,9 @@ Built for the **Gen NeoClaw Hackathon** (Feb 2026).
 ## Pipeline
 
 ```
+memory/business_profile.json ──► loaded on startup, confirmed with user
+         │
+         ▼
 trend_scraper.py          trend_filter.py          content_planner.py       report_generator.py
      |                         |                         |                        |
 TikTok Creative Center    LLM scores each trend    Generates 5 Reel         Renders HTML report
@@ -15,6 +18,9 @@ Google Trends RSS         on relevance, virality,  concepts + 7-day         and 
      v                         |                         |                        |
  trends.json                   v                         v                        v
                         filtered_trends.json       content_plan.json       reports/{date}/report.html
+         │
+         ▼
+memory/business_profile.json ◄── updated with any new preferences from conversation
 ```
 
 ## Quick Start
@@ -89,6 +95,7 @@ python3 scripts/report_generator.py --push   # pushes to GitHub
 | `output/content_plan.json` | 5 Reel concepts + 7-day calendar |
 | `output/{date}/report.html` | Self-contained HTML report |
 | `output/prompt_*.txt` | Generated LLM prompts (for inspection) |
+| `memory/business_profile.json` | Saved business profile for returning users |
 
 ## Data Sources
 
@@ -127,7 +134,34 @@ This project is packaged as an OpenClaw Skill. The `SKILL.md` file tells the Neo
 
 ### Business Profile Memory
 
-The skill remembers your business details across sessions. On first use, it asks for your business type, country, and optional details (business name, target audience, brand voice, etc.). On subsequent runs, it loads your saved profile and confirms before proceeding -- no need to re-enter information. If you share preferences during a session (e.g. "our audience is women 25-40"), the agent automatically saves them for future use.
+The skill remembers your business details across sessions so returning users never have to re-enter information.
+
+**First run:** The agent asks for your business type, country, and optional details, then saves everything to `memory/business_profile.json`.
+
+**Returning user:** The agent loads your saved profile, shows a friendly summary, and asks you to confirm before proceeding. You can update specific fields (e.g. "I changed my target audience") or start fresh for a different business.
+
+**Smart updates:** If you share preferences mid-conversation (e.g. "our audience is women 25-40" or "we never do dancing reels"), the agent automatically saves them for future sessions.
+
+#### Saved Profile Fields
+
+| Field | Example |
+|-------|---------|
+| `business_name` | "Sunrise Bakery" |
+| `business_type` | `bakery` |
+| `country` | `US` |
+| `location_detail` | "Austin, TX" |
+| `target_audience` | "Women 25-40, health-conscious" |
+| `brand_voice` | "Fun and casual" |
+| `content_preferences` | "Behind-the-scenes, no dancing reels" |
+| `posting_frequency` | "3 posts per week" |
+| `platforms` | "Instagram, TikTok" |
+| `additional_notes` | "We're vegan-only, highlight seasonal items" |
+
+The agent saves **durable business info** (audience, voice, preferences) but ignores **transient requests** ("show me this week's trends").
+
+### Past Reports
+
+Past reports are saved locally at `~/.openclaw/skills/social-media-strategist/memory/reports/{YYYY-MM-DD}/`. Before generating a new plan, the agent checks recent reports to avoid repeating the same content ideas.
 
 ### OpenClaw Directory
 
