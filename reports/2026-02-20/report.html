@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Content Plan</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg: #0f0f13;
+    --bg-secondary: #16161d;
+    --surface: rgba(255,255,255,0.04);
+    --surface-hover: rgba(255,255,255,0.07);
+    --surface-solid: #1c1c26;
+    --border: rgba(255,255,255,0.08);
+    --border-light: rgba(255,255,255,0.05);
+    --text: #e8e8ed;
+    --text-secondary: #a0a0b0;
+    --text-muted: #6b6b80;
+    --accent: #8b5cf6;
+    --accent-light: rgba(139,92,246,0.12);
+    --accent-glow: rgba(139,92,246,0.25);
+    --pink: #ec4899;
+    --pink-light: rgba(236,72,153,0.12);
+    --amber: #f59e0b;
+    --amber-light: rgba(245,158,11,0.12);
+    --emerald: #10b981;
+    --emerald-light: rgba(16,185,129,0.12);
+    --blue: #3b82f6;
+    --blue-light: rgba(59,130,246,0.12);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
+    --gradient-hero: linear-gradient(135deg, #1a1033 0%, #0f0f13 50%, #0d1117 100%);
+    --gradient-card: linear-gradient(135deg, rgba(139,92,246,0.06) 0%, rgba(236,72,153,0.03) 100%);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.page-wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+}
+
+/* ---- HERO HEADER ---- */
+header {
+    background: var(--gradient-hero);
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 1.5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+header::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+header::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(236,72,153,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+header .header-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+header h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #c084fc 0%, #f472b6 50%, #fb923c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.6rem;
+}
+.meta {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+.subtitle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    margin-left: 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(139,92,246,0.2);
+}
+
+/* ---- SECTION ---- */
+section { margin-bottom: 3rem; }
+h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.2em;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--pink));
+    flex-shrink: 0;
+}
+
+/* ---- CALENDAR ---- */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+.cal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+.cal-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+}
+.cal-card:hover {
+    border-color: rgba(139,92,246,0.3);
+    background: var(--surface-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(139,92,246,0.1);
+}
+.cal-card.type-trending::before { background: linear-gradient(90deg, var(--accent), var(--pink)); }
+.cal-card.type-evergreen::before { background: linear-gradient(90deg, var(--emerald), #34d399); }
+.cal-card.type-engagement::before { background: linear-gradient(90deg, var(--amber), #fbbf24); }
+.cal-card.type-rest::before { background: linear-gradient(90deg, #6b7280, #9ca3af); }
+.cal-card.type-promo::before { background: linear-gradient(90deg, var(--blue), #60a5fa); }
+.cal-day {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+.cal-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+.cal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+.cal-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.04);
+    padding: 3px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+}
+.cal-chip svg { width: 12px; height: 12px; opacity: 0.6; }
+
+/* ---- TABLE (for details/trends) ---- */
+.table-wrap { overflow-x: auto; border-radius: var(--radius-sm); }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+    background: var(--surface-solid);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+th {
+    background: rgba(255,255,255,0.04);
+    color: var(--text-muted);
+    font-weight: 600;
+    text-align: left;
+    padding: 0.7rem 0.85rem;
+    white-space: nowrap;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--border);
+}
+td {
+    padding: 0.65rem 0.85rem;
+    border-top: 1px solid var(--border-light);
+    vertical-align: top;
+    color: var(--text-secondary);
+}
+tr:hover td { background: rgba(139,92,246,0.04); }
+.day-cell { white-space: nowrap; min-width: 80px; color: var(--text); }
+.notes-cell { color: var(--text-muted); font-size: 0.8rem; max-width: 280px; }
+
+/* ---- BADGES ---- */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border: 1px solid transparent;
+}
+
+/* ---- CONCEPT CARDS ---- */
+.concepts-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+.card {
+    background: var(--gradient-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: all 0.25s ease;
+}
+.card:hover {
+    border-color: rgba(139,92,246,0.25);
+    box-shadow: var(--shadow-lg), 0 0 40px rgba(139,92,246,0.06);
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid var(--border);
+}
+.card-header h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+.card-badges { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+.time-est {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.card-body {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+.hook {
+    background: rgba(245,158,11,0.08);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--amber);
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.5;
+}
+.hook strong { color: var(--amber); font-weight: 600; }
+.script { background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); padding: 0.8rem 1rem; }
+.script strong { color: var(--text-secondary); font-weight: 600; font-size: 0.84rem; }
+.script ol { padding-left: 1.5rem; margin-top: 0.4rem; }
+.script li {
+    margin-bottom: 0.35rem;
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.script li::marker { color: var(--accent); font-weight: 600; }
+.detail-row {
+    font-size: 0.86rem;
+    padding: 0.3rem 0;
+    color: var(--text-secondary);
+}
+.label {
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-right: 0.3rem;
+}
+.hashtag {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    margin: 2px 3px;
+    border: 1px solid rgba(139,92,246,0.15);
+    font-weight: 500;
+    transition: all 0.15s ease;
+}
+.hashtag:hover { background: rgba(139,92,246,0.2); }
+
+/* ---- DETAILS / EXPANDABLE ---- */
+details {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+}
+details summary {
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.15s ease;
+}
+details summary::before {
+    content: '\25B6';
+    font-size: 0.6rem;
+    color: var(--accent);
+    transition: transform 0.2s ease;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { background: var(--surface-hover); }
+details[open] summary { border-bottom: 1px solid var(--border); }
+details > :not(summary) { padding: 0 1.5rem; }
+details table { box-shadow: none; }
+details .table-wrap { margin: 1rem 0; }
+.summary-pills { padding: 1rem 0; font-size: 0.84rem; color: var(--text-secondary); }
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    margin: 3px;
+    color: var(--text-secondary);
+}
+
+/* ---- HASHTAG TIERS ---- */
+.hashtags-tiered { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.hashtag-tier { display: inline-flex; align-items: center; gap: 4px; margin-right: 0.5rem; }
+.tier-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ---- PLATFORM TIPS ---- */
+.platform-tips {
+    list-style: none;
+    padding: 0.5rem 0 0 0;
+    margin: 0.4rem 0 0 0;
+    border-top: 1px dashed var(--border);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+.platform-tips li { margin-bottom: 0.25rem; }
+.platform-tips li strong { color: var(--accent); font-weight: 600; }
+
+/* ---- MISC ---- */
+.muted { color: var(--text-muted); font-size: 0.82rem; padding: 0.5rem 0 1rem; }
+.empty-state { text-align: center; padding: 4rem 2rem; }
+.empty-state h2::before { display: none; }
+.empty-state pre {
+    background: var(--surface-solid);
+    border: 1px solid var(--border);
+    padding: 1.2rem;
+    border-radius: var(--radius-sm);
+    text-align: left;
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+}
+
+/* ---- FOOTER ---- */
+footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    margin-top: 3rem;
+    padding: 2rem 1rem;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+}
+footer span {
+    background: linear-gradient(135deg, var(--accent), var(--pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 700px) {
+    header { padding: 2.5rem 1rem 2rem; }
+    header h1 { font-size: 1.7rem; }
+    .page-wrapper { padding: 0 1rem 2rem; }
+    .calendar-grid { grid-template-columns: 1fr; }
+    .card-header { flex-direction: column; align-items: flex-start; gap: 0.4rem; padding: 0.8rem 1rem; }
+    .card-body { padding: 1rem; }
+    th, td { padding: 0.4rem 0.5rem; font-size: 0.78rem; }
+}
+@media (max-width: 480px) {
+    header h1 { font-size: 1.4rem; }
+    .cal-card { padding: 1rem; }
+}
+</style>
+</head>
+<body>
+    
+    <header>
+        <div class="header-inner">
+            <h1>Social Media Content Plan</h1>
+            <p class="meta">Home Decor &middot; — &middot; February 20, 2026 <span class="subtitle">50 trends scanned</span></p>
+        </div>
+    </header>
+    <div class="page-wrapper">
+    
+    <section>
+        <h2>Weekly Calendar</h2>
+        <div class="calendar-grid">
+            <div class="cal-card type-Transformation / Brand Story">
+                <div class="cal-day">Monday</div>
+                <div class="cal-title">—</div>
+                <div class="cal-meta">
+                    <span class="cal-chip">&#128337; —</span>
+                    <span class="cal-chip">Instagram, TikTok</span>
+                    <span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">Transformation / Brand Story</span>
+                </div>
+                <div class="cal-notes"><ul class="platform-tips"><li><strong>Instagram:</strong> Post as a Reel. Add to your &#x27;Our Story&#x27; Highlight. Use location tag: California. Put your most important hashtags in the caption — don&#x27;t hide in comments.</li><li><strong>TikTok:</strong> Add a text overlay in the first 2 seconds to hook scrollers. Use 3-5 hashtags max on TikTok. Stitch-friendly format encourages duets from home decor fans.</li></ul></div>
+            </div>
+            <div class="cal-card type-Behind the Scenes / Brand Trust">
+                <div class="cal-day">Tuesday</div>
+                <div class="cal-title">—</div>
+                <div class="cal-meta">
+                    <span class="cal-chip">&#128337; —</span>
+                    <span class="cal-chip">Instagram, YouTube Shorts</span>
+                    <span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">Behind the Scenes / Brand Trust</span>
+                </div>
+                <div class="cal-notes"><ul class="platform-tips"><li><strong>Instagram:</strong> Post as a Reel during lunch hour when engagement peaks. Add &#x27;Behind the Scenes&#x27; to your Story and pin this Reel to your profile grid.</li><li><strong>YouTube Shorts:</strong> Add keyword-rich title: &#x27;A Day in Our California Reclaimed Wood Workshop 🌅 | The Rustic Farm&#x27;. YouTube Shorts get indexed by search — optimize for &#x27;woodworking California&#x27; and &#x27;reclaimed wood furniture&#x27;.</li></ul></div>
+            </div>
+            <div class="cal-card type-Education / Comparison">
+                <div class="cal-day">Wednesday</div>
+                <div class="cal-title">—</div>
+                <div class="cal-meta">
+                    <span class="cal-chip">&#128337; —</span>
+                    <span class="cal-chip">TikTok, Instagram</span>
+                    <span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">Education / Comparison</span>
+                </div>
+                <div class="cal-notes"><ul class="platform-tips"><li><strong>TikTok:</strong> This format thrives on TikTok controversy — the comparison hook will drive comments and shares. Post at 7PM when your target audience (homeowners) winds down for the evening.</li><li><strong>Instagram:</strong> Use the Collab feature to tag a California interior designer or home stylist — doubles your reach instantly. This content type drives saves, which boosts Instagram algorithm ranking.</li></ul></div>
+            </div>
+            <div class="cal-card type-Satisfying / Viral Format">
+                <div class="cal-day">Thursday</div>
+                <div class="cal-title">—</div>
+                <div class="cal-meta">
+                    <span class="cal-chip">&#128337; —</span>
+                    <span class="cal-chip">TikTok, Instagram, YouTube Shorts</span>
+                    <span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">Satisfying / Viral Format</span>
+                </div>
+                <div class="cal-notes"><ul class="platform-tips"><li><strong>TikTok:</strong> Stop-motion content gets unusually high watch-time (people rewatch it). Use #stopmotion in your first hashtag slot — it has 186M views and stable trajectory.</li><li><strong>Instagram:</strong> Tag the location of your California workshop. Stop-motion visuals are highly shareable to Stories by other accounts — increases organic reach.</li><li><strong>YouTube Shorts:</strong> Title it &#x27;Satisfying Wood Transformation Stop-Motion 🪵 | Reclaimed Wood Furniture&#x27; to capture search traffic from the &#x27;satisfying&#x27; niche.</li></ul></div>
+            </div>
+            <div class="cal-card type-Gift / Product Showcase">
+                <div class="cal-day">Friday</div>
+                <div class="cal-title">—</div>
+                <div class="cal-meta">
+                    <span class="cal-chip">&#128337; —</span>
+                    <span class="cal-chip">Instagram, TikTok</span>
+                    <span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">Gift / Product Showcase</span>
+                </div>
+                <div class="cal-notes"><ul class="platform-tips"><li><strong>Instagram:</strong> Add product tags to every item shown in the video — Instagram Shopping lets viewers click directly to your website. Friday afternoon is prime gift-browsing time for your affluent audience.</li><li><strong>TikTok:</strong> Add a TikTok Shop link if you have one. Use #GiftIdeas — this hashtag spikes on Fridays as people plan weekend gifting. The emotional hook performs well with your warm, luxury brand voice.</li></ul></div>
+            </div>
+            <div class="cal-card type-User-Generated Content / Social Proof">
+                <div class="cal-day">Saturday</div>
+                <div class="cal-title">—</div>
+                <div class="cal-meta">
+                    <span class="cal-chip">&#128337; —</span>
+                    <span class="cal-chip">Instagram, YouTube Shorts</span>
+                    <span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">User-Generated Content / Social Proof</span>
+                </div>
+                <div class="cal-notes">Reach out to 2-3 recent customers mid-week to gather photos or a short video testimonial for this slot.<ul class="platform-tips"><li><strong>Instagram:</strong> Repost a customer photo or create a &#x27;styled in the wild&#x27; Reel featuring a real customer&#x27;s home. Ask permission and tag them — they&#x27;ll share it to their own audience (free reach). Add to &#x27;Customer Homes&#x27; Highlight.</li><li><strong>YouTube Shorts:</strong> Title: &#x27;Customer Home Reveal: Reclaimed Wood Dining Table in a California Home | The Rustic Farm&#x27;. This builds search authority and trust. Testimonial-style content converts browsers into buyers.</li></ul></div>
+            </div>
+            <div class="cal-card type-Live / Community Building">
+                <div class="cal-day">Sunday</div>
+                <div class="cal-title">—</div>
+                <div class="cal-meta">
+                    <span class="cal-chip">&#128337; —</span>
+                    <span class="cal-chip">TikTok</span>
+                    <span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">Live / Community Building</span>
+                </div>
+                <div class="cal-notes">Announce the Live on Saturday via Instagram Stories with a countdown sticker to build anticipation.<ul class="platform-tips"><li><strong>TikTok:</strong> Use #livewithlowfollowers in your pre-live announcement post (Stories + Feed) to get discovered by TikTok&#x27;s algorithm. Go LIVE for at least 20 minutes — walk through your workshop, answer questions, tease upcoming pieces. This builds the authentic community that turns followers into loyal buyers.</li></ul></div>
+            </div></div>
+    </section>
+    <section>
+        <h2>Reel Concepts</h2>
+        <div class="concepts-grid">
+        <div class="card">
+            <div class="card-header">
+                <h3>Reel #1: From Forest Floor to Your Living Room</h3>
+                <div class="card-badges"><span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">—</span> <span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">Easy</span> <span class="time-est"></span></div>
+            </div>
+            <div class="card-body">
+                <div class="hook">
+                    <strong>Hook (first 3s):</strong> This wood was a barn for 80 years. Now it&#x27;s the centerpiece of someone&#x27;s dream home. 🌿
+                </div>
+                <div class="script">
+                    <strong>Script:</strong>
+                    <ol></ol>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Sound:</span> <a href="https://www.tiktok.com/music/x-7596970562758395920" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)">— &#127925;</a>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Caption:</span> Every piece of reclaimed wood has a story. We just give it a new chapter. 🌾
+
+This dining table started as an 80-year-old barn in Northern California. Now it&#x27;s where memories are made.
+
+Shop one-of-a-kind pieces → therusticfarm.com
+
+#ReclaimedWood #RusticLuxury #HomeDecor #SustainableFurniture #TheRusticFarm #CaliforniaHome #WoodWorking #InteriorDesign #FarmhouseStyle #HandcraftedFurniture
+                </div>
+                <div class="detail-row hashtags-tiered">
+                    <span class="label">Hashtags:</span> <span class="hashtag">#ReclaimedWood</span> <span class="hashtag">#RusticLuxury</span> <span class="hashtag">#HomeDecor</span> <span class="hashtag">#SustainableFurniture</span> <span class="hashtag">#TheRusticFarm</span> <span class="hashtag">#CaliforniaHome</span> <span class="hashtag">#WoodWorking</span> <span class="hashtag">#InteriorDesign</span> <span class="hashtag">#FarmhouseStyle</span> <span class="hashtag">#HandcraftedFurniture</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">CTA:</span> Shop therusticfarm.com — link in bio
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3>Reel #2: Mass-Produced vs. The Real Thing</h3>
+                <div class="card-badges"><span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">—</span> <span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">Easy</span> <span class="time-est"></span></div>
+            </div>
+            <div class="card-body">
+                <div class="hook">
+                    <strong>Hook (first 3s):</strong> IKEA furniture lasts 5 years. This lasts 5 generations. Here&#x27;s the difference. 👀
+                </div>
+                <div class="script">
+                    <strong>Script:</strong>
+                    <ol></ol>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Sound:</span> <a href="https://www.tiktok.com/music/x-7596970562758395920" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)">— &#127925;</a>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Caption:</span> Furniture that&#x27;ll outlive us all. 💪
+
+While the rest falls apart in 3 years, our reclaimed wood pieces only get more beautiful with time.
+
+Built by hand. Built to last. Built in California.
+
+👉 therusticfarm.com
+
+#ReclaimedWood #FurnitureTikTok #HomeDecor #SustainableLiving #BuyItForLife #TheRusticFarm #WoodFurniture #LuxuryHomeDecor #CaliforniaDesign #QualityOverQuantity
+                </div>
+                <div class="detail-row hashtags-tiered">
+                    <span class="label">Hashtags:</span> <span class="hashtag">#ReclaimedWood</span> <span class="hashtag">#FurnitureTikTok</span> <span class="hashtag">#HomeDecor</span> <span class="hashtag">#SustainableLiving</span> <span class="hashtag">#BuyItForLife</span> <span class="hashtag">#TheRusticFarm</span> <span class="hashtag">#WoodFurniture</span> <span class="hashtag">#LuxuryHomeDecor</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">CTA:</span> Link in bio — shop pieces that last a lifetime
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3>Reel #3: The Stop-Motion Transformation</h3>
+                <div class="card-badges"><span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">—</span> <span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">Medium</span> <span class="time-est"></span></div>
+            </div>
+            <div class="card-body">
+                <div class="hook">
+                    <strong>Hook (first 3s):</strong> Watch this old barn plank become something extraordinary... ✨
+                </div>
+                <div class="script">
+                    <strong>Script:</strong>
+                    <ol></ol>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Sound:</span> <a href="https://www.tiktok.com/music/x-7596970562758395920" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)">— &#127925;</a>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Caption:</span> From forgotten barn to forever home. 🪵✨
+
+Every knot, crack, and grain mark tells 100 years of history. We just give it 100 more.
+
+Handcrafted in California. Shop at therusticfarm.com 🌿
+
+#StopMotion #ReclaimedWood #Woodworking #HomeDecor #TheRusticFarm #FurnitureMakeover #Satisfying #ArtisanFurniture #CaliforniaHome #Handcrafted
+                </div>
+                <div class="detail-row hashtags-tiered">
+                    <span class="label">Hashtags:</span> <span class="hashtag">#StopMotion</span> <span class="hashtag">#ReclaimedWood</span> <span class="hashtag">#Woodworking</span> <span class="hashtag">#HomeDecor</span> <span class="hashtag">#TheRusticFarm</span> <span class="hashtag">#Satisfying</span> <span class="hashtag">#ArtisanFurniture</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">CTA:</span> Full shop at therusticfarm.com — link in bio
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3>Reel #4: The Perfect Gift They&#x27;ll Never Throw Away</h3>
+                <div class="card-badges"><span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">—</span> <span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">Easy</span> <span class="time-est"></span></div>
+            </div>
+            <div class="card-body">
+                <div class="hook">
+                    <strong>Hook (first 3s):</strong> Still looking for a gift that&#x27;ll actually mean something? Look no further. 🎁
+                </div>
+                <div class="script">
+                    <strong>Script:</strong>
+                    <ol></ol>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Sound:</span> <a href="https://www.tiktok.com/music/x-7596970562758395920" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)">— &#127925;</a>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Caption:</span> The gift that gets better every year. 🌾❤️
+
+No expiry date. No trend cycle. Just beautiful, one-of-a-kind reclaimed wood that becomes more precious with time.
+
+Perfect for housewarming, anniversaries, birthdays — or just because.
+
+Shop → therusticfarm.com
+
+#GiftIdeas #ReclaimedWood #HomeDecor #LuxuryGifts #HouseWarmingGift #TheRusticFarm #ArtisanGifts #CaliforniaHome #UniqueGifts #WoodDecor
+                </div>
+                <div class="detail-row hashtags-tiered">
+                    <span class="label">Hashtags:</span> <span class="hashtag">#GiftIdeas</span> <span class="hashtag">#ReclaimedWood</span> <span class="hashtag">#HomeDecor</span> <span class="hashtag">#LuxuryGifts</span> <span class="hashtag">#HouseWarmingGift</span> <span class="hashtag">#TheRusticFarm</span> <span class="hashtag">#UniqueGifts</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">CTA:</span> Shop gifts at therusticfarm.com
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3>Reel #5: A Day in the Workshop</h3>
+                <div class="card-badges"><span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">—</span> <span class="badge" style="color:#9ca3af;background:rgba(156,163,175,0.1);border-color:rgba(156,163,175,0.2)">Easy</span> <span class="time-est"></span></div>
+            </div>
+            <div class="card-body">
+                <div class="hook">
+                    <strong>Hook (first 3s):</strong> This is what 6am in a California woodshop looks like. 🌅
+                </div>
+                <div class="script">
+                    <strong>Script:</strong>
+                    <ol></ol>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Sound:</span> <a href="https://www.tiktok.com/music/x-7596970562758395920" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)">— &#127925;</a>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Caption:</span> Slow craft. Fast shipping. 🐢📦
+
+Every piece from The Rustic Farm is hand-built in our California workshop — no machines, no shortcuts, no compromises.
+
+This is what we love doing. We hope you love living with it.
+
+Explore the collection → therusticfarm.com
+
+#Woodworking #BehindTheScenes #ArtisanFurniture #ReclaimedWood #TheRusticFarm #MadeInCalifornia #Handcrafted #WoodShop #InteriorDesign #RusticLuxury
+                </div>
+                <div class="detail-row hashtags-tiered">
+                    <span class="label">Hashtags:</span> <span class="hashtag">#Woodworking</span> <span class="hashtag">#BehindTheScenes</span> <span class="hashtag">#ArtisanFurniture</span> <span class="hashtag">#ReclaimedWood</span> <span class="hashtag">#TheRusticFarm</span> <span class="hashtag">#MadeInCalifornia</span> <span class="hashtag">#Handcrafted</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">CTA:</span> Explore the full collection at therusticfarm.com
+                </div>
+            </div>
+        </div></div>
+    </section>
+    
+    <section>
+        <h2>Full Pipeline Data</h2>
+        
+    <details>
+        <summary>Filtered Trends — Top 10 Scored Trends</summary>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th><th>Trend</th><th>Source</th><th>Type</th>
+                        <th>Overall</th><th>Rel</th><th>Viral</th><th>Diff</th><th>Time</th>
+                        <th>Suggested Angle</th>
+                    </tr>
+                </thead>
+                <tbody>
+            <tr>
+                <td>1</td>
+                <td>&#9835; Two Birds</td>
+                <td>tiktok</td>
+                <td>song</td>
+                <td><strong>9.0</strong></td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>10</td>
+                <td class="notes-cell">Use this dreamy Regina Spektor track as a backdrop for slow, cinematic shots of reclaimed wood pieces in a warm, sunlit California home — let the beauty of the wood speak for itself.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>&#9835; Syncopated Swing</td>
+                <td>tiktok</td>
+                <td>song</td>
+                <td><strong>9.2</strong></td>
+                <td>9</td>
+                <td>8</td>
+                <td>10</td>
+                <td>10</td>
+                <td class="notes-cell">Pair this upbeat, craftsman-vibes track with a satisfying workshop-to-living-room transformation showing reclaimed wood becoming a luxury furniture piece.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>&#9835; Purple Hearts</td>
+                <td>tiktok</td>
+                <td>song</td>
+                <td><strong>8.7</strong></td>
+                <td>7</td>
+                <td>9</td>
+                <td>10</td>
+                <td>9</td>
+                <td class="notes-cell">Use this trending track for an aesthetic &#x27;a day in the workshop&#x27; montage — hands on wood, sawdust, finished product — the artisan luxury story.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>&#9835; #stopmotion</td>
+                <td>tiktok</td>
+                <td>hashtag</td>
+                <td><strong>7.7</strong></td>
+                <td>8</td>
+                <td>8</td>
+                <td>6</td>
+                <td>8</td>
+                <td class="notes-cell">Create a stop-motion Reel showing a raw reclaimed wood plank being transformed into a finished dining table or shelf — visually captivating and highly shareable.</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>&#9835; #home</td>
+                <td>tiktok</td>
+                <td>hashtag</td>
+                <td><strong>8.8</strong></td>
+                <td>10</td>
+                <td>10</td>
+                <td>10</td>
+                <td>5</td>
+                <td class="notes-cell">Post aspirational lifestyle shots of a California home furnished with Rustic Farm pieces under #home to tap into the massive 963M-view hashtag audience.</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>&#9835; Love &amp; War</td>
+                <td>tiktok</td>
+                <td>song</td>
+                <td><strong>8.3</strong></td>
+                <td>7</td>
+                <td>8</td>
+                <td>10</td>
+                <td>9</td>
+                <td class="notes-cell">Use this track for a &#x27;before and after&#x27; room transformation reel — starting with a bare, uninspiring room, ending with a stunning Rustic Farm piece as the centrepiece.</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>&#9835; Ain&#x27;t Shit</td>
+                <td>tiktok</td>
+                <td>song</td>
+                <td><strong>8.4</strong></td>
+                <td>6</td>
+                <td>9</td>
+                <td>10</td>
+                <td>10</td>
+                <td class="notes-cell">Use this viral Doja Cat track for a playful &#x27;other furniture vs. Rustic Farm&#x27; comparison reel — showing mass-produced flat-pack vs. your handcrafted reclaimed wood luxury pieces.</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>&#9835; #livewithlowfollowers</td>
+                <td>tiktok</td>
+                <td>hashtag</td>
+                <td><strong>8.4</strong></td>
+                <td>7</td>
+                <td>9</td>
+                <td>10</td>
+                <td>8</td>
+                <td class="notes-cell">Go TikTok LIVE to showcase a workshop session or new furniture drop — this hashtag helps small creators get discovered and the live format builds authentic brand trust.</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>&#9835; #shabebarat</td>
+                <td>tiktok</td>
+                <td>hashtag</td>
+                <td><strong>7.0</strong></td>
+                <td>5</td>
+                <td>7</td>
+                <td>10</td>
+                <td>8</td>
+                <td class="notes-cell">Tie seasonal gifting/celebration content to Rustic Farm pieces — &#x27;the gift of a lifetime, not just a season&#x27; — luxury home decor as a meaningful, lasting gift.</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>&#9835; 霧化する言語 (Yasuhiro Soda)</td>
+                <td>tiktok</td>
+                <td>song</td>
+                <td><strong>8.3</strong></td>
+                <td>8</td>
+                <td>7</td>
+                <td>10</td>
+                <td>9</td>
+                <td class="notes-cell">Use this atmospheric Japanese track for a slow, cinematic product showcase — extreme close-ups of wood grain, hand joints, and natural imperfections — the art of reclaimed wood.</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </details>
+    <details>
+        <summary>Trend Discovery — 50 Signals Collected</summary>
+        <div class="summary-pills">
+            <strong>By source:</strong> <span class="pill">&#9835; tiktok: 40</span> <span class="pill">&#128270; google_trends: 10</span>
+            &nbsp;&nbsp;<strong>By type:</strong> <span class="pill">hashtag: 20</span> <span class="pill">song: 10</span> <span class="pill">video: 10</span> <span class="pill">search_trend: 10</span>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Source</th><th>Name</th><th>Type</th>
+                        <th>Views/Score</th><th>Rank Chg</th><th>Trajectory</th><th>7d Curve</th>
+                    </tr>
+                </thead>
+                <tbody>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#shabebarat</td>
+                <td>hashtag</td>
+                <td>9.7M</td>
+                <td>+51</td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,12.0 26.7,2.0 40.0,14.5 53.3,12.6 66.7,9.5 80.0,10.8 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,12.0 26.7,2.0 40.0,14.5 53.3,12.6 66.7,9.5 80.0,10.8" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#home</td>
+                <td>hashtag</td>
+                <td>963.3M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,9.3 13.3,3.8 26.7,2.0 40.0,22.0 53.3,20.2 66.7,21.1 80.0,21.1 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,9.3 13.3,3.8 26.7,2.0 40.0,22.0 53.3,20.2 66.7,21.1 80.0,21.1" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#makefriendslive</td>
+                <td>hashtag</td>
+                <td>243.3M</td>
+                <td>+3</td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,6.3 26.7,9.1 40.0,14.9 53.3,17.7 66.7,19.1 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,6.3 26.7,9.1 40.0,14.9 53.3,17.7 66.7,19.1 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#livewithlowfollowers</td>
+                <td>hashtag</td>
+                <td>121.8M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,13.4 13.3,4.9 26.7,2.0 40.0,13.4 53.3,10.6 66.7,22.0 80.0,16.3 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,13.4 13.3,4.9 26.7,2.0 40.0,13.4 53.3,10.6 66.7,22.0 80.0,16.3" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#epstein</td>
+                <td>hashtag</td>
+                <td>3.1B</td>
+                <td>+2</td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,4.1 26.7,7.7 40.0,14.9 53.3,16.3 66.7,19.9 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,4.1 26.7,7.7 40.0,14.9 53.3,16.3 66.7,19.9 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#teamworkmakesthedreamwork</td>
+                <td>hashtag</td>
+                <td>44.1M</td>
+                <td>+47</td>
+                <td><span class="badge" style="color:#f87171;background:rgba(248,113,113,0.12);border-color:rgba(248,113,113,0.25)">SPIKE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,8.7 13.3,4.1 26.7,2.0 40.0,20.6 53.3,21.5 66.7,21.8 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,8.7 13.3,4.1 26.7,2.0 40.0,20.6 53.3,21.5 66.7,21.8 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#epsteinfiles</td>
+                <td>hashtag</td>
+                <td>1.5B</td>
+                <td>+10</td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,5.2 26.7,9.4 40.0,15.2 53.3,16.7 66.7,18.3 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,5.2 26.7,9.4 40.0,15.2 53.3,16.7 66.7,18.3 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#epsteinisland</td>
+                <td>hashtag</td>
+                <td>1.0B</td>
+                <td>+15</td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,5.6 26.7,8.7 40.0,13.5 53.3,14.1 66.7,17.2 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,5.6 26.7,8.7 40.0,13.5 53.3,14.1 66.7,17.2 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#magallanes</td>
+                <td>hashtag</td>
+                <td>34.1M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,20.0 13.3,21.2 26.7,19.5 40.0,2.0 53.3,16.4 66.7,20.7 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,20.0 13.3,21.2 26.7,19.5 40.0,2.0 53.3,16.4 66.7,20.7 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#copadelrey</td>
+                <td>hashtag</td>
+                <td>491.5M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,17.0 13.3,2.0 26.7,2.0 40.0,15.9 53.3,18.8 66.7,20.2 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,17.0 13.3,2.0 26.7,2.0 40.0,15.9 53.3,18.8 66.7,20.2 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#jeffreyepstein</td>
+                <td>hashtag</td>
+                <td>880.1M</td>
+                <td>+20</td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,4.9 26.7,9.6 40.0,14.9 53.3,19.1 66.7,20.2 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,4.9 26.7,9.6 40.0,14.9 53.3,19.1 66.7,20.2 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#albacete</td>
+                <td>hashtag</td>
+                <td>9.5M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,9.6 13.3,2.0 26.7,14.4 40.0,22.0 53.3,15.8 66.7,17.9 80.0,17.9 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,9.6 13.3,2.0 26.7,14.4 40.0,22.0 53.3,15.8 66.7,17.9 80.0,17.9" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#zibai</td>
+                <td>hashtag</td>
+                <td>29.8M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,11.4 13.3,19.6 26.7,22.0 40.0,20.8 53.3,19.6 66.7,2.0 80.0,7.9 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,11.4 13.3,19.6 26.7,22.0 40.0,20.8 53.3,19.6 66.7,2.0 80.0,7.9" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#chelsea</td>
+                <td>hashtag</td>
+                <td>467.2M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,19.4 26.7,7.2 40.0,9.1 53.3,22.0 66.7,22.0 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,19.4 26.7,7.2 40.0,9.1 53.3,22.0 66.7,22.0 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#alexwarren</td>
+                <td>hashtag</td>
+                <td>96.0M</td>
+                <td>+34</td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,10.5 26.7,11.2 40.0,12.8 53.3,19.7 66.7,22.0 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,10.5 26.7,11.2 40.0,12.8 53.3,19.7 66.7,22.0 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#stopmotion</td>
+                <td>hashtag</td>
+                <td>186.1M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,5.6 13.3,2.0 26.7,6.5 40.0,2.0 53.3,12.9 66.7,16.5 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,5.6 13.3,2.0 26.7,6.5 40.0,2.0 53.3,12.9 66.7,16.5 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#14февраля</td>
+                <td>hashtag</td>
+                <td>790.2M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,18.7 13.3,17.6 26.7,12.7 40.0,2.0 53.3,16.4 66.7,20.4 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,18.7 13.3,17.6 26.7,12.7 40.0,2.0 53.3,16.4 66.7,20.4 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#files</td>
+                <td>hashtag</td>
+                <td>268.1M</td>
+                <td>+40</td>
+                <td><span class="badge" style="color:#fbbf24;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.25)">DECLINING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,6.0 26.7,8.7 40.0,18.0 53.3,18.0 66.7,19.3 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,6.0 26.7,8.7 40.0,18.0 53.3,18.0 66.7,19.3 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#stormgoretti</td>
+                <td>hashtag</td>
+                <td>364.6M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,2.0 13.3,9.1 26.7,12.6 40.0,13.8 53.3,14.9 66.7,20.8 80.0,22.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,2.0 13.3,9.1 26.7,12.6 40.0,13.8 53.3,14.9 66.7,20.8 80.0,22.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>#cmpunk</td>
+                <td>hashtag</td>
+                <td>52.7M</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#60a5fa;background:rgba(59,130,246,0.12);border-color:rgba(59,130,246,0.25)">STABLE</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,11.0 13.3,19.2 26.7,19.9 40.0,22.0 53.3,22.0 66.7,20.6 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,11.0 13.3,19.2 26.7,19.9 40.0,22.0 53.3,22.0 66.7,20.6 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>霧化する言語</td>
+                <td>song</td>
+                <td>—</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,18.6 26.7,12.9 40.0,13.7 53.3,2.0 66.7,3.7 80.0,7.5 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,18.6 26.7,12.9 40.0,13.7 53.3,2.0 66.7,3.7 80.0,7.5" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>Ain&#x27;t Shit</td>
+                <td>song</td>
+                <td>—</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,22.0 26.7,20.8 40.0,16.3 53.3,13.3 66.7,2.0 80.0,5.8 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,22.0 26.7,20.8 40.0,16.3 53.3,13.3 66.7,2.0 80.0,5.8" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>Two Birds</td>
+                <td>song</td>
+                <td>—</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,21.1 26.7,11.8 40.0,4.3 53.3,8.7 66.7,9.2 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,21.1 26.7,11.8 40.0,4.3 53.3,8.7 66.7,9.2 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>Love &amp; War</td>
+                <td>song</td>
+                <td>—</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,9.4 26.7,18.3 40.0,2.0 53.3,6.8 66.7,9.8 80.0,12.4 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,9.4 26.7,18.3 40.0,2.0 53.3,6.8 66.7,9.8 80.0,12.4" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>La Mamá de los Pollitos</td>
+                <td>song</td>
+                <td>—</td>
+                <td>NEW</td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,22.0 26.7,21.8 40.0,21.8 53.3,21.6 66.7,16.2 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,22.0 26.7,21.8 40.0,21.8 53.3,21.6 66.7,16.2 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>Syncopated Swing</td>
+                <td>song</td>
+                <td>—</td>
+                <td>+6</td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,20.1 13.3,20.7 26.7,21.6 40.0,21.8 53.3,22.0 66.7,20.1 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,20.1 13.3,20.7 26.7,21.6 40.0,21.8 53.3,22.0 66.7,20.1 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>Purple Hearts</td>
+                <td>song</td>
+                <td>—</td>
+                <td>0</td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,18.7 26.7,9.3 40.0,2.0 53.3,6.5 66.7,8.9 80.0,8.1 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,18.7 26.7,9.3 40.0,2.0 53.3,6.5 66.7,8.9 80.0,8.1" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>Ramadan Kareem</td>
+                <td>song</td>
+                <td>—</td>
+                <td>+11</td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,21.8 26.7,19.8 40.0,20.4 53.3,19.3 66.7,16.7 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,21.8 26.7,19.8 40.0,20.4 53.3,19.3 66.7,16.7 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>Ambatukam Termuwani</td>
+                <td>song</td>
+                <td>—</td>
+                <td>NEW</td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,22.0 13.3,21.8 26.7,19.4 40.0,16.3 53.3,10.9 66.7,8.4 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,22.0 13.3,21.8 26.7,19.4 40.0,16.3 53.3,10.9 66.7,8.4 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr>
+            <tr>
+                <td>&#9835; tiktok</td>
+                <td>Beads &amp; Booty (Live)</td>
+                <td>song</td>
+                <td>—</td>
+                <td>+1</td>
+                <td><span class="badge" style="color:#34d399;background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.25)">RISING</span></td>
+                <td><svg width="80" height="24" viewBox="0 0 80 24" style="vertical-align:middle"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/><stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><polygon points="0.0,21.8 13.3,22.0 26.7,21.2 40.0,19.3 53.3,11.8 66.7,10.1 80.0,2.0 80.0,24 0,24" fill="url(#sg)"/><polyline points="0.0,21.8 13.3,22.0 26.7,21.2 40.0,19.3 53.3,11.8 66.7,10.1 80.0,2.0" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+            </tr></tbody>
+            </table>
+        </div>
+        <p class="muted">Showing top 30 of 50 trends.</p>
+    </details>
+    </section>
+    </div>
+    <footer>
+        Generated by <span>Social Media Strategist Agent</span> &middot; 2026-02-20 00:26 UTC
+    </footer>
+</body>
+</html>
