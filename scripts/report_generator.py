@@ -69,16 +69,21 @@ def inject_sound_links(content_plan: dict, trends: dict | None) -> dict:
         sound = concept.get("sound", "")
         sound_base = sound.split("\u2014")[0].split("\u2013")[0].split(" - ")[0].strip().lower()
 
+        # Skip matching if sound_base is empty or just a dash placeholder
+        if not sound_base or sound_base in ("—", "-", "–"):
+            continue
+
         if sound_base in url_map:
             concept["sound_link"] = url_map[sound_base]
             continue
 
-        # Fuzzy fallback: partial match
-        for trend_name, link in url_map.items():
-            if not trend_name.startswith("tiktok_"):  # skip id keys
-                if trend_name in sound_base or sound_base in trend_name:
-                    concept["sound_link"] = link
-                    break
+        # Fuzzy fallback: partial match (require at least 3 chars to avoid false positives)
+        if len(sound_base) >= 3:
+            for trend_name, link in url_map.items():
+                if not trend_name.startswith("tiktok_"):  # skip id keys
+                    if trend_name in sound_base or sound_base in trend_name:
+                        concept["sound_link"] = link
+                        break
 
     return content_plan
 
