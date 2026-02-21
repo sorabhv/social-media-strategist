@@ -1,4 +1,4 @@
-# Social Media Strategist Agent
+# Social Media Strategist SKILL
 
 An AI agent skill for [NeoClaw](https://docs.openclaw.ai) that helps small businesses discover trending content across TikTok and Google Trends, then generates a personalized weekly content plan with ready-to-film Reel concepts, captions, and hashtags.
 
